@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { appHomePath, boundedContexts } from '@/shared/config/navigation.js'
 import { isSessionAuthed } from '@/shared/config/session-auth.js'
-import iamRoutes from '@/iam/presentation/iam-routes.js'
 import inventoryRoutes from '@/inventory/presentation/inventory-routes.js'
 import { logisticsShellChildren } from '@/logistics/presentation/logistics-routes.js'
 import Layout from '@/shared/presentation/components/layout.vue'
@@ -59,7 +58,6 @@ layoutChildren.push({
 })
 
 const routes = [
-  ...iamRoutes,
   {
     path: '/',
     component: Layout,
