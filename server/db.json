@@ -1,0 +1,556 @@
+{
+  "inventory": {
+    "productos": [
+      {
+        "idProducto": "PROD-001",
+        "nombre": "Insulina Glargina",
+        "categoria": "t:productCategory.medicine",
+        "temperaturaMin": 2,
+        "temperaturaMax": 8,
+        "fechaVencimiento": "2026-06-28",
+        "lote": "LOT-001",
+        "estado": "disponible"
+      },
+      {
+        "idProducto": "PROD-002",
+        "nombre": "Paracetamol Jarabe",
+        "categoria": "t:productCategory.medicine",
+        "temperaturaMin": 15,
+        "temperaturaMax": 30,
+        "fechaVencimiento": "2026-06-18",
+        "lote": "LOT-002",
+        "estado": "disponible"
+      },
+      {
+        "idProducto": "PROD-003",
+        "nombre": "Amoxicilina 500mg",
+        "categoria": "t:productCategory.medicine",
+        "temperaturaMin": 15,
+        "temperaturaMax": 25,
+        "fechaVencimiento": "2026-07-24",
+        "lote": "LOT-003",
+        "estado": "disponible"
+      },
+      {
+        "idProducto": "PROD-004",
+        "nombre": "Oxitocina",
+        "categoria": "t:productCategory.medicine",
+        "temperaturaMin": 2,
+        "temperaturaMax": 8,
+        "fechaVencimiento": "2026-10-03",
+        "lote": "LOT-004",
+        "estado": "en_transito"
+      },
+      {
+        "idProducto": "PROD-005",
+        "nombre": "Vacuna Pfizer COVID-19",
+        "categoria": "t:productCategory.medicine",
+        "temperaturaMin": -90,
+        "temperaturaMax": -60,
+        "fechaVencimiento": "2026-05-31",
+        "lote": "LOT-005",
+        "estado": "en_transito"
+      },
+      {
+        "idProducto": "PROD-006",
+        "nombre": "Vacuna Hepatitis B",
+        "categoria": "t:productCategory.medicine",
+        "temperaturaMin": 2,
+        "temperaturaMax": 8,
+        "fechaVencimiento": "2026-08-29",
+        "lote": "LOT-006",
+        "estado": "disponible"
+      }
+    ],
+    "inventario": [
+      {
+        "idInventario": "INV-001",
+        "idProducto": "PROD-001",
+        "cantidad": 10,
+        "ubicacion": "t:places.main_warehouse",
+        "fechaIngreso": "2026-05-13"
+      },
+      {
+        "idInventario": "INV-002",
+        "idProducto": "PROD-002",
+        "cantidad": 0,
+        "ubicacion": "t:places.main_warehouse",
+        "fechaIngreso": "2026-05-13"
+      },
+      {
+        "idInventario": "INV-003",
+        "idProducto": "PROD-003",
+        "cantidad": 0,
+        "ubicacion": "t:places.main_warehouse",
+        "fechaIngreso": "2026-05-13"
+      },
+      {
+        "idInventario": "INV-004",
+        "idProducto": "PROD-004",
+        "cantidad": 0,
+        "ubicacion": "t:places.main_warehouse",
+        "fechaIngreso": "2026-05-13"
+      },
+      {
+        "idInventario": "INV-005",
+        "idProducto": "PROD-005",
+        "cantidad": 0,
+        "ubicacion": "t:places.main_warehouse",
+        "fechaIngreso": "2026-05-13"
+      },
+      {
+        "idInventario": "INV-006",
+        "idProducto": "PROD-006",
+        "cantidad": 30,
+        "ubicacion": "t:places.main_warehouse",
+        "fechaIngreso": "2026-05-13"
+      }
+    ]
+  },
+  "logistics": {
+    "transportistas": [
+      {
+        "idTransportista": "T1",
+        "nombre": {
+          "en": "Default fleet",
+          "es": "Flota predeterminada"
+        },
+        "tipoVehiculo": {
+          "en": "Refrigerated truck",
+          "es": "Camión refrigerado"
+        },
+        "contacto": "",
+        "codigo": "mi_flota"
+      }
+    ],
+    "destinos": [
+      {
+        "idDestino": "DST-001",
+        "codigo": "alamcen_a",
+        "nombre": {
+          "en": "Alamcen A",
+          "es": "Alamcen A"
+        }
+      },
+      {
+        "idDestino": "DST-002",
+        "codigo": "almacen_b",
+        "nombre": {
+          "en": "Almacen B",
+          "es": "Almacen B"
+        }
+      },
+      {
+        "idDestino": "DST-003",
+        "codigo": "pediatric_vaccination_center",
+        "nombre": {
+          "en": "Pediatric Vaccination Center",
+          "es": "Pediatric Vaccination Center"
+        }
+      },
+      {
+        "idDestino": "DST-004",
+        "codigo": "community_health_clinic",
+        "nombre": {
+          "en": "Community Health Clinic",
+          "es": "Community Health Clinic"
+        }
+      },
+      {
+        "idDestino": "DST-005",
+        "codigo": "university_research_lab",
+        "nombre": {
+          "en": "University Research Lab",
+          "es": "University Research Lab"
+        }
+      },
+      {
+        "idDestino": "DST-006",
+        "codigo": "emergency_response_center",
+        "nombre": {
+          "en": "Emergency Response Center",
+          "es": "Emergency Response Center"
+        }
+      },
+      {
+        "idDestino": "DST-007",
+        "codigo": "almacen_c",
+        "nombre": {
+          "en": "Almacen C",
+          "es": "Almacen C"
+        }
+      },
+      {
+        "idDestino": "DST-008",
+        "codigo": "private_pharmacy_chain",
+        "nombre": {
+          "en": "Private Pharmacy Chain",
+          "es": "Private Pharmacy Chain"
+        }
+      }
+    ],
+    "choferes": [
+      {
+        "idChofer": "DRV-001",
+        "idTransportista": "T1",
+        "codigo": "emp_001",
+        "nombre": {
+          "en": "Carlos Mendoza",
+          "es": "Carlos Mendoza"
+        },
+        "licencia": "LIC-PH-20451",
+        "contacto": "987654321",
+        "rol": "conductor"
+      },
+      {
+        "idChofer": "DRV-002",
+        "idTransportista": "T1",
+        "codigo": "emp_0002",
+        "nombre": {
+          "en": "Andrea Salas",
+          "es": "Andrea Salas"
+        },
+        "licencia": "",
+        "contacto": "976452318",
+        "rol": "operario"
+      },
+      {
+        "idChofer": "DRV-003",
+        "idTransportista": "T1",
+        "codigo": "emp_0003",
+        "nombre": {
+          "en": "Miguel",
+          "es": "Miguel"
+        },
+        "licencia": "LIC-DRV-55219",
+        "contacto": "965874123",
+        "rol": "conductor"
+      },
+      {
+        "idChofer": "DRV-004",
+        "idTransportista": "T1",
+        "codigo": "emp_0004",
+        "nombre": {
+          "en": "Valeria Rojas",
+          "es": "Valeria Rojas"
+        },
+        "licencia": "",
+        "contacto": "954123876",
+        "rol": "operario"
+      },
+      {
+        "idChofer": "DRV-005",
+        "idTransportista": "T1",
+        "codigo": "emp_0005",
+        "nombre": {
+          "en": "Diego Fernández",
+          "es": "Diego Fernández"
+        },
+        "licencia": "LIC-INV-44217",
+        "contacto": "942876531",
+        "rol": "conductor"
+      },
+      {
+        "idChofer": "DRV-006",
+        "idTransportista": "T1",
+        "codigo": "emp_0006",
+        "nombre": {
+          "en": "Lucía",
+          "es": "Lucía"
+        },
+        "licencia": "",
+        "contacto": "933214587",
+        "rol": "operario"
+      }
+    ],
+    "rutas": [
+      {
+        "idRuta": "RT1",
+        "codigo": "alamcen_a",
+        "origen": {
+          "en": "Main warehouse",
+          "es": "Almacén principal"
+        },
+        "destino": {
+          "en": "Alamcen A",
+          "es": "Alamcen A"
+        },
+        "distanciaKm": 1,
+        "tiempoEstimadoHoras": 1
+      },
+      {
+        "idRuta": "RT2",
+        "codigo": "almacen_b",
+        "origen": {
+          "en": "Main warehouse",
+          "es": "Almacén principal"
+        },
+        "destino": {
+          "en": "Almacen B",
+          "es": "Almacen B"
+        },
+        "distanciaKm": 1,
+        "tiempoEstimadoHoras": 1
+      },
+      {
+        "idRuta": "RT3",
+        "codigo": "pediatric_vaccination_center",
+        "origen": {
+          "en": "Main warehouse",
+          "es": "Almacén principal"
+        },
+        "destino": {
+          "en": "Pediatric Vaccination Center",
+          "es": "Pediatric Vaccination Center"
+        },
+        "distanciaKm": 1,
+        "tiempoEstimadoHoras": 1
+      },
+      {
+        "idRuta": "RT4",
+        "codigo": "community_health_clinic",
+        "origen": {
+          "en": "Main warehouse",
+          "es": "Almacén principal"
+        },
+        "destino": {
+          "en": "Community Health Clinic",
+          "es": "Community Health Clinic"
+        },
+        "distanciaKm": 1,
+        "tiempoEstimadoHoras": 1
+      },
+      {
+        "idRuta": "RT5",
+        "codigo": "university_research_lab",
+        "origen": {
+          "en": "Main warehouse",
+          "es": "Almacén principal"
+        },
+        "destino": {
+          "en": "University Research Lab",
+          "es": "University Research Lab"
+        },
+        "distanciaKm": 1,
+        "tiempoEstimadoHoras": 1
+      },
+      {
+        "idRuta": "RT6",
+        "codigo": "emergency_response_center",
+        "origen": {
+          "en": "Main warehouse",
+          "es": "Almacén principal"
+        },
+        "destino": {
+          "en": "Emergency Response Center",
+          "es": "Emergency Response Center"
+        },
+        "distanciaKm": 1,
+        "tiempoEstimadoHoras": 1
+      },
+      {
+        "idRuta": "RT7",
+        "codigo": "almacen_c",
+        "origen": {
+          "en": "Main warehouse",
+          "es": "Almacén principal"
+        },
+        "destino": {
+          "en": "Almacen C",
+          "es": "Almacen C"
+        },
+        "distanciaKm": 1,
+        "tiempoEstimadoHoras": 1
+      },
+      {
+        "idRuta": "RT8",
+        "codigo": "private_pharmacy_chain",
+        "origen": {
+          "en": "Main warehouse",
+          "es": "Almacén principal"
+        },
+        "destino": {
+          "en": "Private Pharmacy Chain",
+          "es": "Private Pharmacy Chain"
+        },
+        "distanciaKm": 1,
+        "tiempoEstimadoHoras": 1
+      }
+    ],
+    "despachos": [
+      {
+        "idDespacho": "S001",
+        "idInventario": "INV-003",
+        "idTransportista": "T1",
+        "idOperario": "DRV-002",
+        "cantidad": 40,
+        "fechaSalida": "2026-05-13T17:19:52.446Z",
+        "fechaEntregaEstimada": "2026-05-15T05:19:52.446Z",
+        "estado": "pendiente",
+        "estadoTermico": "estable",
+        "modoUbicacion": "almacen",
+        "ubicacionAlmacen": {
+          "en": "Alamcen A",
+          "es": "Alamcen A"
+        },
+        "destino": {
+          "en": "Alamcen A",
+          "es": "Alamcen A"
+        },
+        "temperaturaActual": null,
+        "textos": {
+          "originPlace": {
+            "en": "Alamcen A",
+            "es": "Alamcen A"
+          },
+          "destPlace": {
+            "en": "Alamcen A",
+            "es": "Alamcen A"
+          },
+          "currentPlaceAlmacen": {
+            "en": "Awaiting handling — warehouse storage",
+            "es": "En espera — almacenaje en almacén"
+          }
+        }
+      },
+      {
+        "idDespacho": "S002",
+        "idInventario": "INV-004",
+        "idTransportista": "T1",
+        "idChofer": "DRV-005",
+        "idRuta": "RT3",
+        "cantidad": 34,
+        "fechaSalida": "2026-05-13T17:20:20.292Z",
+        "fechaEntregaEstimada": "2026-05-15T05:20:20.292Z",
+        "estado": "en_transito",
+        "estadoTermico": "estable",
+        "destino": {
+          "en": "Pediatric Vaccination Center",
+          "es": "Pediatric Vaccination Center"
+        },
+        "temperaturaActual": 2.1,
+        "textos": {
+          "originPlace": {
+            "en": "Almacen B",
+            "es": "Almacen B"
+          },
+          "destPlace": {
+            "en": "Pediatric Vaccination Center",
+            "es": "Pediatric Vaccination Center"
+          },
+          "currentPlace": {
+            "en": "In transit",
+            "es": "En tránsito"
+          },
+          "destTime": {
+            "en": "Est. per route — arrival",
+            "es": "Est. según ruta — llegada"
+          }
+        }
+      },
+      {
+        "idDespacho": "S003",
+        "idInventario": "INV-005",
+        "idTransportista": "T1",
+        "idChofer": "DRV-003",
+        "idRuta": "RT6",
+        "cantidad": 30,
+        "fechaSalida": "2026-05-13T17:20:49.970Z",
+        "fechaEntregaEstimada": "2026-05-15T05:20:49.970Z",
+        "estado": "en_transito",
+        "estadoTermico": "estable",
+        "destino": {
+          "en": "Emergency Response Center",
+          "es": "Emergency Response Center"
+        },
+        "temperaturaActual": -18.5,
+        "textos": {
+          "originPlace": {
+            "en": "Community Health Clinic",
+            "es": "Community Health Clinic"
+          },
+          "destPlace": {
+            "en": "Emergency Response Center",
+            "es": "Emergency Response Center"
+          },
+          "currentPlace": {
+            "en": "In transit",
+            "es": "En tránsito"
+          },
+          "destTime": {
+            "en": "Est. per route — arrival",
+            "es": "Est. según ruta — llegada"
+          }
+        }
+      },
+      {
+        "idDespacho": "S004",
+        "idInventario": "INV-002",
+        "idTransportista": "T1",
+        "idOperario": "DRV-002",
+        "idRuta": "RT1",
+        "cantidad": 20,
+        "fechaSalida": "2026-05-13T17:21:18.892Z",
+        "fechaEntregaEstimada": "2026-05-15T05:21:18.892Z",
+        "estado": "pendiente",
+        "estadoTermico": "estable",
+        "destino": {
+          "en": "Alamcen A",
+          "es": "Alamcen A"
+        },
+        "temperaturaActual": null,
+        "textos": {
+          "originPlace": {
+            "en": "Almacen B",
+            "es": "Almacen B"
+          },
+          "destPlace": {
+            "en": "Alamcen A",
+            "es": "Alamcen A"
+          },
+          "currentPlace": {
+            "en": "In transit",
+            "es": "En tránsito"
+          },
+          "destTime": {
+            "en": "Est. per route — arrival",
+            "es": "Est. según ruta — llegada"
+          }
+        }
+      }
+    ]
+  },
+  "environmentalMonitoring": {
+    "registrosTemperatura": []
+  },
+  "alerts": {
+    "alertas": []
+  },
+  "system": {
+    "usuarios": [
+      {
+        "idUsuario": "u1",
+        "nombre": "Admin Demo",
+        "correo": "admin@safeflow.local",
+        "contrasena": "***",
+        "rol": "admin",
+        "estado": "activo"
+      },
+      {
+        "idUsuario": "u2",
+        "nombre": "Operador Demo",
+        "correo": "ops@safeflow.local",
+        "contrasena": "***",
+        "rol": "operador",
+        "estado": "activo"
+      }
+    ],
+    "reportes": [],
+    "indicadores": {
+      "totalProductos": 0,
+      "productosEnRiesgo": 0,
+      "productosSeguros": 0,
+      "porcentajeRiesgo": 0
+    }
+  }
+}
