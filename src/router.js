@@ -83,7 +83,11 @@ router.beforeEach((to) => {
     return true
   }
   if (!isSessionAuthed()) {
-    return { name: 'login', query: { next: to.fullPath } }
+    // IAM routes may be absent on some branches; redirecting to a missing `login`
+    // breaks navigation and shows a blank page (e.g. Netlify production).
+    if (router.hasRoute('login')) {
+      return { name: 'login', query: { next: to.fullPath } }
+    }
   }
   return true
 })

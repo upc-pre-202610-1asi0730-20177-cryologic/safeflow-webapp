@@ -30,13 +30,7 @@ export default defineConfig({
   },
   server: {
     warmup: {
-      clientFiles: [
-        './src/main.js',
-        './src/App.vue',
-        './src/router.js',
-        './src/iam/presentation/views/login.vue',
-        './src/iam/presentation/views/register.vue',
-      ],
+      clientFiles: ['./src/main.js', './src/App.vue', './src/router.js'],
     },
   },
   optimizeDeps: {

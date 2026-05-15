@@ -13,7 +13,11 @@ const router = useRouter()
 
 function logout() {
   setSessionAuthed(false)
-  router.push({ name: 'login' })
+  if (router.hasRoute('login')) {
+    router.push({ name: 'login' })
+  } else {
+    router.push({ name: 'analytics-root' })
+  }
 }
 
 const ctx = computed(() => contextByPath(route.path))
