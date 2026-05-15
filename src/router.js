@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { appHomePath, boundedContexts } from '@/shared/config/navigation.js'
 import { isSessionAuthed } from '@/shared/config/session-auth.js'
+import iamRoutes from '@/iam/presentation/iam-routes.js'
 import inventoryRoutes from '@/inventory/presentation/inventory-routes.js'
 import { logisticsShellChildren } from '@/logistics/presentation/logistics-routes.js'
 import Layout from '@/shared/presentation/components/layout.vue'
@@ -58,6 +59,7 @@ layoutChildren.push({
 })
 
 const routes = [
+  ...iamRoutes,
   {
     path: '/',
     component: Layout,
@@ -83,11 +85,7 @@ router.beforeEach((to) => {
     return true
   }
   if (!isSessionAuthed()) {
-    // IAM routes may be absent on some branches; redirecting to a missing `login`
-    // breaks navigation and shows a blank page (e.g. Netlify production).
-    if (router.hasRoute('login')) {
-      return { name: 'login', query: { next: to.fullPath } }
-    }
+    return { name: 'login', query: { next: to.fullPath } }
   }
   return true
 })
