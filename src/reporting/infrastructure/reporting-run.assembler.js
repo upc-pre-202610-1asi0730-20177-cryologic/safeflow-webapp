@@ -1,4 +1,4 @@
-import { createReportingRun } from '../domain/model/reporting-run.entity.js'
+import { createReportingRun } from '../model/reporting-run.entity.js'
 
 export function toReportingRunEntity(dto) {
   const base = `bounded.reporting.runs.${dto.id}`

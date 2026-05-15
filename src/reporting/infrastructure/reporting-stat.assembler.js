@@ -1,4 +1,4 @@
-import { createReportingStat } from '../domain/model/reporting-stat.entity.js'
+import { createReportingStat } from '../model/reporting-stat.entity.js'
 
 export function toReportingStatEntity(dto) {
   return createReportingStat({

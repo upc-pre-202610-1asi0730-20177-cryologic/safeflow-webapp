@@ -1,4 +1,4 @@
-import { createReportingCatalogItem } from '../domain/model/reporting-catalog-item.entity.js'
+import { createReportingCatalogItem } from '../model/reporting-catalog-item.entity.js'
 
 export function toReportingCatalogItemEntity(dto) {
   const base = `bounded.reporting.catalog.${dto.id}`
