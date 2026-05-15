@@ -3,5 +3,5 @@
  */
 export const BRAND_MARK_SRC = '/images/logo-completo.png'
 
-/** Marca compacta en la barra lateral (login/registro siguen usando `BRAND_MARK_SRC`). */
+/** Marca compacta (sidebar + icono circular en pantallas de login/registro). */
 export const BRAND_MARK_SIDEBAR_SRC = '/images/logoP-safelow.png'

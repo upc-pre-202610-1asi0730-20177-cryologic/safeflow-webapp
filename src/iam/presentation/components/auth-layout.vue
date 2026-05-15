@@ -1,157 +1,183 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from '@/shared/presentation/components/language-switcher.vue'
-import { BRAND_MARK_SRC } from '@/shared/config/branding.js'
-import heroImg from '@/assets/hero.png'
+import { BRAND_MARK_SIDEBAR_SRC } from '@/shared/config/branding.js'
+
+const { t } = useI18n()
 </script>
 
 <template>
-  <div class="sf-auth">
+  <div class="sf-auth-page">
     <pv-toast position="top-right" />
-    <section class="sf-auth__hero" aria-hidden="false">
-      <div class="sf-auth__hero-inner">
-        <img class="sf-auth__logo" :src="BRAND_MARK_SRC" alt="SafeFlow" width="180" height="48" />
-        <div class="sf-auth__hero-text">
-          <slot name="hero-lead" />
+    <header class="sf-auth-page__toolbar">
+      <LanguageSwitcher />
+    </header>
+    <main class="sf-auth-page__center">
+      <div class="sf-auth-card">
+        <div class="sf-auth-card__brand">
+          <div class="sf-auth-card__logo-ring">
+            <img
+              class="sf-auth-card__logo-img"
+              :src="BRAND_MARK_SIDEBAR_SRC"
+              alt=""
+              width="48"
+              height="48"
+            />
+          </div>
+          <span class="sf-auth-card__wordmark">{{ t('shell.appName') }}</span>
         </div>
-        <div class="sf-auth__hero-art">
-          <img class="sf-auth__hero-img" :src="heroImg" alt="" />
-        </div>
-      </div>
-    </section>
-    <section class="sf-auth__panel">
-      <header class="sf-auth__toolbar">
-        <LanguageSwitcher />
-      </header>
-      <div class="sf-auth__card">
         <slot />
       </div>
-    </section>
+    </main>
   </div>
 </template>
 
 <style scoped>
-.sf-auth {
-  display: grid;
+.sf-auth-page {
   min-height: 100vh;
   font-family: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: light;
+  background: #eceff4;
   color: #0f172a;
-  background: #f8fafc;
 }
 
-@media (min-width: 900px) {
-  .sf-auth {
-    grid-template-columns: minmax(320px, 1fr) minmax(400px, 1fr);
-  }
-}
-
-.sf-auth__hero {
-  position: relative;
-  padding: clamp(24px, 4vw, 48px);
-  background: linear-gradient(145deg, #1e3a8a 0%, #2563eb 42%, #0369a1 100%);
-  color: #f8fafc;
-  display: flex;
-  align-items: stretch;
-  overflow: hidden;
-}
-
-.sf-auth__hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 20% 90%, rgba(56, 189, 248, 0.35), transparent 55%);
-  pointer-events: none;
-}
-
-.sf-auth__hero-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(16px, 3vw, 28px);
-  width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
-  justify-content: center;
-}
-
-.sf-auth__logo {
-  width: auto;
-  max-width: 200px;
-  height: auto;
-  filter: drop-shadow(0 2px 12px rgba(15, 23, 42, 0.35));
-}
-
-.sf-auth__hero-text :deep(h1) {
-  margin: 0 0 12px;
-  font-size: clamp(26px, 3.2vw, 36px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: #fff;
-}
-
-.sf-auth__hero-text :deep(p) {
-  margin: 0;
-  font-size: clamp(15px, 1.4vw, 17px);
-  line-height: 1.5;
-  color: rgba(241, 245, 249, 0.92);
-  max-width: 36ch;
-}
-
-.sf-auth__hero-art {
-  margin-top: auto;
-  padding-top: 24px;
-  display: flex;
-  justify-content: center;
-}
-
-.sf-auth__hero-img {
-  width: min(100%, 400px);
-  height: auto;
-  object-fit: contain;
-  opacity: 0.92;
-  filter: drop-shadow(0 24px 40px rgba(15, 23, 42, 0.35));
-}
-
-.sf-auth__panel {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(20px, 3vw, 36px);
-  background: #f8fafc;
-}
-
-.sf-auth__toolbar {
+.sf-auth-page__toolbar {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: clamp(16px, 2vw, 24px);
+  padding: 16px 20px 0;
 }
 
-.sf-auth__card {
-  flex: 1;
+.sf-auth-page__center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px 48px;
+}
+
+.sf-auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 36px 36px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow:
+    0 4px 24px rgba(15, 23, 42, 0.07),
+    0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.sf-auth-card__brand {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  max-width: 420px;
-  width: 100%;
-  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 28px;
 }
 
-@media (max-width: 899px) {
-  .sf-auth {
-    grid-template-columns: 1fr;
-  }
+.sf-auth-card__logo-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
 
-  .sf-auth__hero {
-    min-height: auto;
-    padding: 32px 24px 24px;
-  }
+.sf-auth-card__logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
 
-  .sf-auth__hero-art {
-    display: none;
-  }
+.sf-auth-card__wordmark {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1e3a8a;
+}
+</style>
 
-  .sf-auth__panel {
-    padding-top: 0;
-  }
+<style>
+/* PrimeVue + Material heredan modo oscuro del SO; fuerza IAM en superficie clara. */
+.sf-auth-page .sf-auth-card input.p-inputtext,
+.sf-auth-page .sf-auth-card .p-inputtext {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px !important;
+  border: 1px solid #cbd5e1 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+.sf-auth-page .sf-auth-card input.p-inputtext::placeholder,
+.sf-auth-page .sf-auth-card .p-inputtext::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1;
+}
+
+.sf-auth-page .sf-auth-card input.p-inputtext:enabled:hover,
+.sf-auth-page .sf-auth-card .p-inputtext:enabled:hover {
+  border-color: #94a3b8 !important;
+}
+
+.sf-auth-page .sf-auth-card input.p-inputtext:enabled:focus,
+.sf-auth-page .sf-auth-card .p-inputtext:enabled:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.25) !important;
+  outline: none !important;
+}
+
+.sf-auth-page .sf-auth-card input.p-inputtext:-webkit-autofill,
+.sf-auth-page .sf-auth-card input.p-inputtext:-webkit-autofill:hover,
+.sf-auth-page .sf-auth-card input.p-inputtext:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+.sf-auth-page .sf-auth-card .p-checkbox .p-checkbox-box {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+.sf-auth-page .sf-auth-card .p-checkbox.p-checkbox-checked .p-checkbox-box {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+.sf-auth-page .sf-auth-card .p-checkbox.p-checkbox-checked .p-checkbox-icon {
+  color: #ffffff !important;
+}
+
+.sf-auth-page .sf-auth-card .sf-auth-form__submit.p-button {
+  width: 100%;
+  justify-content: center;
+  border-radius: 8px !important;
+  padding-top: 11px !important;
+  padding-bottom: 11px !important;
+  font-weight: 600 !important;
+  background: #ffffff !important;
+  color: #2563eb !important;
+  border: 1px solid #2563eb !important;
+}
+
+.sf-auth-page .sf-auth-card .sf-auth-form__submit.p-button:not(:disabled):hover {
+  background: #eff6ff !important;
+  border-color: #1d4ed8 !important;
+  color: #1d4ed8 !important;
+}
+
+.sf-auth-page .sf-auth-card .sf-auth-form__submit.p-button:not(:disabled):focus-visible {
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35) !important;
+}
+
+.sf-auth-page .sf-auth-card .sf-auth-form__submit.p-button.p-disabled,
+.sf-auth-page .sf-auth-card .sf-auth-form__submit.p-button:disabled {
+  opacity: 0.65 !important;
+  cursor: not-allowed;
 }
 </style>
