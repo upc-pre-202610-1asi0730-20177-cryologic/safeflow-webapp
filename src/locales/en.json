@@ -1,0 +1,697 @@
+{
+  "shell": {
+    "appName": "SafeFlow",
+    "contextsSubtitle": "Bounded contexts",
+    "modules": "Modules",
+    "collapse": "Collapse",
+    "expandMenu": "Expand menu",
+    "systemStatus": "System status",
+    "operational": "Operational",
+    "searchPlaceholder": "Search in current context…",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "profilePage": {
+      "title": "Profile",
+      "back": "Back",
+      "summaryTitle": "Profile summary",
+      "underConstructionTitle": "This profile area is under construction",
+      "underConstructionBody": "What you see on this page is still a work in progress. Several fields and buttons are placeholders and do not yet save real data or connect to the backend. We are finishing how the profile loads your account, validates changes, and ties into permissions. Thank you for your patience while we complete this part of SafeFlow.",
+      "personalTitle": "Personal information",
+      "accountTitle": "Account details",
+      "demoName": "Alex Johnson",
+      "demoId": "ID: ADM-98765",
+      "lastUpdated": "Last updated: 10/15/2023",
+      "statusActive": "ACTIVE",
+      "fullName": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "birthDate": "Date of birth",
+      "gender": "Gender",
+      "genderPlaceholder": "Select",
+      "genderOption": {
+        "m": "Male",
+        "f": "Female",
+        "o": "Other"
+      },
+      "address": "Address",
+      "addressPlaceholder": "Street, city, postal code…",
+      "userRole": "User role",
+      "department": "Department",
+      "selectPlaceholder": "Select",
+      "roles": {
+        "admin": "Administrator",
+        "operator": "Operator",
+        "viewer": "Viewer"
+      },
+      "departments": {
+        "logistics": "Logistics",
+        "qa": "Cold chain QA",
+        "ops": "Operations"
+      },
+      "password": "Password",
+      "changePassword": "Change password",
+      "profilePhoto": "Profile photo",
+      "uploadPhoto": "Upload new photo",
+      "save": "Save changes",
+      "cancel": "Cancel"
+    },
+    "profileDialog": {
+      "title": "Edit profile",
+      "lead": "Update your account details. Changes are not saved yet.",
+      "fullName": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "organization": "Organization",
+      "role": "Role / title",
+      "save": "Save changes"
+    },
+    "logout": "Sign out",
+    "stubLead": "Placeholder screen. Replace with your bounded context implementation."
+  },
+  "footer": {
+    "line": "© SafeFlow — supply chain visibility."
+  },
+  "auth": {
+    "login": {
+      "heroTitle": "Sign In",
+      "heroSubtitle": "Cold chain monitoring & management",
+      "email": "Email address",
+      "password": "Password",
+      "emailPlaceholder": "admin{'@'}safeflow.com",
+      "remember": "Remember me",
+      "forgot": "Forgot your password?",
+      "signIn": "Sign in",
+      "signingIn": "Signing in…",
+      "divider": "New to SafeFlow?",
+      "createAccount": "Create an account",
+      "errorRequired": "Enter your email and password."
+    },
+    "register": {
+      "heroTitle": "Create your SafeFlow account",
+      "heroSubtitle": "Cold chain monitoring & management",
+      "name": "Full name",
+      "namePlaceholder": "Jane Doe",
+      "email": "Email address",
+      "password": "Password",
+      "passwordPlaceholder": "At least 6 characters",
+      "confirm": "Confirm password",
+      "confirmPlaceholder": "Repeat password",
+      "submit": "Create account",
+      "creating": "Creating…",
+      "divider": "Already have an account?",
+      "signIn": "Sign in",
+      "errorName": "Enter your name.",
+      "errorEmail": "Enter a valid email.",
+      "errorPasswordLen": "Password must be at least 6 characters.",
+      "errorPasswordMatch": "Passwords do not match."
+    }
+  },
+  "notFound": {
+    "title": "Not found",
+    "message": "This path does not exist in SafeFlow.",
+    "backAlerts": "Go to Alerts",
+    "backAnalytics": "Go to Analytics"
+  },
+  "bounded": {
+    "alerts": {
+      "label": "Alerts",
+      "pageLead": "",
+      "emptyFeed": "No monitored product is outside its allowed range right now.",
+      "observe": "Under observation",
+      "observeDisabledHint": "Already under observation: reading is paused; contact details remain on this card.",
+      "observationBanner": "Under observation — thermal reading paused. Dispatch, location, and contact stay here so you can coordinate.",
+      "solved": "Solved",
+      "pausedSectionTitle": "Under observation (temperature reading paused)",
+      "pausedSectionLead": "These items are excluded from new thermal alerts until you mark them solved.",
+      "resolve": "Mark as resolved",
+      "kpi": {
+        "shipments": { "title": "Monitored items" },
+        "completed": { "title": "Resolved (historical)" },
+        "transit": { "title": "Open thermal alerts" },
+        "delayed": { "title": "Out of range (detected)" }
+      },
+      "thermal": {
+        "title": "{product} is outside the allowed temperature range."
+      },
+      "card": {
+        "tempIntro": "Current temperature ",
+        "limitPart": "(Limit: {value})",
+        "where": "Where",
+        "personInCharge": "Person in charge",
+        "contact": "Contact",
+        "dispatchId": "Dispatch {id}"
+      },
+      "types": {
+        "temperatura_alta": "High temperature",
+        "temperatura_baja": "Low temperature",
+        "vencimiento": "Expiry / disposal review"
+      },
+      "locations": {
+        "transit": "In transit (linked dispatch)",
+        "warehouse": "Warehouse / storage"
+      },
+      "time": {
+        "recent": "Recent event"
+      },
+      "items": {
+        "a1": {
+          "title": "COVID-19 vaccines",
+          "location": "Transport • Route 4 — Truck AB-123",
+          "time": "14:32:05 — 25 Apr 2026"
+        },
+        "a2": {
+          "title": "Insulin glargine",
+          "location": "Warehouse • Sector B — Refrigerator 2",
+          "time": "13:18:42 — 25 Apr 2026"
+        },
+        "a3": {
+          "title": "Premium dairy",
+          "location": "Transport • Route 12 — Van XY-987",
+          "time": "12:05:11 — 25 Apr 2026"
+        }
+      }
+    },
+    "analytics": {
+      "label": "Analytics",
+      "kpi": {
+        "shipments": { "title": "Total shipments" },
+        "completed": { "title": "Completed deliveries" },
+        "transit": { "title": "In transit" },
+        "delayed": { "title": "Delayed" }
+      },
+      "chart": {
+        "title": "Shipments per week",
+        "periodWeek": "This week",
+        "periodMonth": "Last month",
+        "placeholderHint": "Chart data loads here (connect your analytics source)."
+      },
+      "deliveryStatus": {
+        "title": "Delivery status",
+        "lead": "Current distribution of all active shipments.",
+        "legend": {
+          "delivered": "Delivered",
+          "transit": "In transit",
+          "pending": "Pending",
+          "delayed": "Delayed"
+        }
+      },
+      "recent": {
+        "title": "Recent shipments",
+        "viewAll": "View all"
+      },
+      "table": {
+        "id": "Shipment ID",
+        "destination": "Destination",
+        "status": "Status",
+        "date": "Date",
+        "driver": "Driver",
+        "action": "Action",
+        "view": "View"
+      },
+      "shipmentStatus": {
+        "delivered": "Delivered",
+        "transit": "In transit",
+        "pending": "Pending",
+        "delayed": "Delayed"
+      },
+      "shipments": {
+        "s1": {
+          "dest": "Madrid",
+          "date": "Oct 24, 2023",
+          "carrier": "DHL Express"
+        },
+        "s2": {
+          "dest": "Barcelona",
+          "date": "Oct 24, 2023",
+          "carrier": "FedEx"
+        },
+        "s3": {
+          "dest": "Valencia",
+          "date": "Oct 23, 2023",
+          "carrier": "UPS"
+        },
+        "s4": {
+          "dest": "Seville",
+          "date": "Oct 23, 2023",
+          "carrier": "DHL Express"
+        },
+        "s5": {
+          "dest": "Bilbao",
+          "date": "Oct 22, 2023",
+          "carrier": "FedEx"
+        }
+      },
+      "fleetStatus": {
+        "on_route": "On route",
+        "available": "Available",
+        "maintenance": "Maintenance"
+      },
+      "fleet": {
+        "title": "Fleet performance",
+        "viewMap": "View fleet map",
+        "v1": { "line": "V-1042 — Miguel A." },
+        "v2": { "line": "V-2201 — Laura P." },
+        "v3": { "line": "V-1188 — Carlos R." },
+        "v4": { "line": "V-3004 — Ana M." }
+      }
+    },
+    "environmental": {
+      "label": "Monitoring",
+      "pageLead": "Live temperature monitoring for sensitive shipments and cold storage.",
+      "addPoint": "Add monitoring point",
+      "kpi": {
+        "shipments": { "title": "Total shipments" },
+        "completed": { "title": "Completed deliveries" },
+        "transit": { "title": "In transit" },
+        "delayed": { "title": "Delayed" }
+      },
+      "monitorCards": {
+        "rangeCaption": "Target range",
+        "personLabel": "Person in charge",
+        "destLabel": "Destination",
+        "roleLabel": "Driver or operator",
+        "warehouseLabel": "Warehouse",
+        "destWarehouseMode": "At warehouse (on site, no outbound)",
+        "warehouseDash": "—",
+        "role": {
+          "conductor": "Driver",
+          "operario": "Operator",
+          "none": "Not assigned"
+        },
+        "badge": {
+          "safe": "Safe",
+          "warning": "At risk",
+          "observation": "Reading paused"
+        },
+        "m1": { "title": "Vaccine Batch A-20" },
+        "m2": { "title": "Insulin Pack B-118" },
+        "m3": { "title": "Organ Transport D-99" },
+        "m4": { "title": "Blood Sample C-042" },
+        "m5": { "title": "Serology Reagents K-221" },
+        "m6": { "title": "Frozen Plasma Lot F-55" },
+        "m7": { "title": "Pediatric Vaccine Batch P-07" },
+        "m8": { "title": "Cold Room Dairy Assortment" },
+        "m9": { "title": "Lab Sample Transport S-903" }
+      },
+      "monitorPoints": {
+        "PROD-001": "COVID-19 vaccines",
+        "PROD-002": "Insulin glargine",
+        "PROD-003": "Fresh seafood",
+        "PROD-004": "Premium dairy",
+        "PROD-005": "Blood plasma",
+        "PROD-006": "Lab reagents",
+        "PROD-007": "dddd",
+        "PROD-008": "Ice packs"
+      },
+      "simulation": {
+        "secretAria": "Toggle thermal drift simulation (syncs inventory, logistics, alerts, monitoring)",
+        "secretTitleOff": "Simulation: drift temperatures every few seconds app-wide (same values in monitoring, inventory, logistics, alerts). Bottom-right — click again to stop.",
+        "secretTitleOn": "Stop thermal simulation (bottom-right)"
+      }
+    },
+    "inventory": {
+      "label": "Inventory",
+      "pageLead": "Cold chain stock overview — temperature-sensitive products by location.",
+      "addItem": "Add inventory item",
+      "addStockLine": "Add stock",
+      "stockLine": {
+        "pageTitle": "Stock at another warehouse",
+        "lead": "",
+        "cardTitle": "Stock line",
+        "product": "Product",
+        "save": "Add stock line",
+        "saveSuccess": "Stock line saved to server/db.json.",
+        "saveError": "Could not save. In production set VITE_API_BASE_URL (e.g. MockAPI). Locally use npm run dev or npm run dev:mockapi.",
+        "validationError": "Select a product, location, and quantity.",
+        "noProducts": "No products in inventory yet. Add a product first."
+      },
+      "newProduct": {
+        "pageTitle": "New product",
+        "lead": "",
+        "cardTitle": "Product details",
+        "productName": "Name",
+        "lote": "Batch / lot",
+        "fechaVencimiento": "Expiry date",
+        "fechaIngreso": "Entry date",
+        "tempMin": "Minimum temperature",
+        "tempMax": "Maximum temperature",
+        "save": "Add product",
+        "cancel": "Cancel",
+        "saveSuccess": "Product added to server/db.json.",
+        "saveError": "Could not save. In production set VITE_API_BASE_URL (e.g. MockAPI). Locally use npm run dev or npm run dev:mockapi.",
+        "validationError": "Please complete all fields.",
+        "placeholder": {
+          "name": "e.g. Insulin glargine",
+          "lote": "e.g. LOT-001",
+          "quantity": "0",
+          "temp": "°C",
+          "select": "Select…"
+        },
+        "category": {
+          "medicine": "Medicine",
+          "food": "Food"
+        },
+        "location": {
+          "mainWarehouse": "Main warehouse",
+          "freezer1": "Freezer 1",
+          "coldRoom": "Cold room A",
+          "sectorB": "Sector B — Fridge 2",
+          "almacenA": "Almacen A",
+          "almacenB": "Almacen B"
+        }
+      },
+      "table": {
+        "idProducto": "Product ID",
+        "nombre": "Name",
+        "product": "Product",
+        "category": "Category",
+        "temperature": "Temperature range",
+        "tempMin": "Min temp",
+        "tempMax": "Max temp",
+        "fechaVencimiento": "Expiry date",
+        "fechaIngreso": "Entry date",
+        "lote": "Batch / lot",
+        "quantity": "Quantity",
+        "location": "Location",
+        "status": "Status"
+      },
+      "status": {
+        "available": "Available",
+        "risk": "At risk",
+        "inactive": "Inactive",
+        "discarded": "Discarded",
+        "in_transit": "In transit"
+      },
+      "rows": {
+        "r1": {
+          "name": "COVID-19 vaccines",
+          "category": "Medicine",
+          "location": "Main warehouse",
+          "temp": "2°C to 8°C"
+        },
+        "r2": {
+          "name": "Insulin glargine",
+          "category": "Medicine",
+          "location": "Sector B — Fridge 2",
+          "temp": "2°C to 8°C"
+        },
+        "r3": {
+          "name": "Fresh seafood",
+          "category": "Food",
+          "location": "Freezer 1",
+          "temp": "-20°C to -18°C"
+        },
+        "r4": {
+          "name": "Premium dairy",
+          "category": "Food",
+          "location": "Cold room A",
+          "temp": "2°C to 6°C"
+        },
+        "r5": {
+          "name": "Blood plasma",
+          "category": "Medicine",
+          "location": "Medical freezer",
+          "temp": "-30°C to -25°C"
+        },
+        "r6": {
+          "name": "Lab reagents",
+          "category": "Medicine",
+          "location": "Sector C — Shelf 4",
+          "temp": "2°C to 8°C"
+        }
+      }
+    },
+    "logistics": {
+      "label": "Logistics",
+      "trackingTitle": "Logistics & tracking",
+      "newShipment": "New shipment",
+      "newDestination": "New destination",
+      "newDriver": "Driver or operator",
+      "newDestinationForm": {
+        "pageTitle": "New destination",
+        "lead": "Save a place name only. You can use it as origin or destination in your other forms.",
+        "cardTitle": "Create destination",
+        "codigo": "Route code",
+        "codigoPlaceholder": "e.g. regional_hub_north",
+        "codigoHint": "Lowercase letters, numbers, and underscores. Must start with a letter. Must be unique.",
+        "nombre": "Destination name",
+        "nombreHint": "The server generates an internal route code for shipments; you only set the visible name.",
+        "origen": "Origin (optional)",
+        "origenPlaceholder": "Leave blank to use the default warehouse",
+        "distanciaKm": "Distance (km)",
+        "tiempoHoras": "Estimated time (hours)",
+        "save": "Save destination",
+        "cancel": "Cancel",
+        "validationError": "Enter a destination name.",
+        "saveSuccess": "Destination saved to server/db.json.",
+        "saveError": "Could not save. In production set VITE_API_BASE_URL (e.g. MockAPI). Locally use npm run dev or npm run dev:mockapi.",
+        "errorCodigoExists": "A destination with an equivalent code already exists. Try a different name.",
+        "listTitle": "Registered destinations",
+        "listEmpty": "No custom destinations yet.",
+        "colCodigo": "Code",
+        "colNombre": "Name",
+        "colKm": "Km",
+        "colHoras": "Hours",
+        "colActions": "Actions",
+        "edit": "Edit",
+        "delete": "Delete",
+        "deleteHeader": "Delete destination",
+        "deleteMessage": "Delete «{name}»?",
+        "deleteSuccess": "Destination removed.",
+        "deleteError": "Could not delete the destination.",
+        "deleteBlocked": "Shipments use this route; it cannot be deleted.",
+        "updateSave": "Save changes",
+        "updateSuccess": "Changes saved.",
+        "updateError": "Could not save changes.",
+        "cancelEdit": "New destination"
+      },
+      "newDriverForm": {
+        "pageTitle": "Driver or operator",
+        "lead": "Register a driver or warehouse operator. Only drivers appear when you create a shipment.",
+        "cardTitle": "Person details",
+        "codigo": "Code",
+        "codigoPlaceholder": "e.g. maria_garcia",
+        "codigoHint": "Lowercase letters, numbers, and underscores. Unique per person.",
+        "nombre": "Name",
+        "rol": "Operator or driver",
+        "rolConductor": "Driver",
+        "rolOperario": "Operator",
+        "licencia": "License ID",
+        "licenciaHint": "Optional.",
+        "contacto": "Phone or email",
+        "save": "Save",
+        "cancel": "Cancel",
+        "validationError": "Enter code and name.",
+        "saveSuccess": "Record saved to server/db.json.",
+        "saveError": "Could not save. In production set VITE_API_BASE_URL (e.g. MockAPI). Locally use npm run dev or npm run dev:mockapi.",
+        "errorCodigoExists": "That code is already in use.",
+        "errorFleet": "No fleet is configured in the database (logistics needs at least one line).",
+        "listTitle": "Registered people",
+        "listEmpty": "No records yet.",
+        "colCodigo": "Code",
+        "colNombre": "Name",
+        "colRol": "Role",
+        "colLicencia": "License",
+        "colContacto": "Contact",
+        "colActions": "Actions",
+        "edit": "Edit",
+        "delete": "Delete",
+        "deleteHeader": "Delete record",
+        "deleteMessage": "Delete {name} ({code})?",
+        "deleteSuccess": "Record removed.",
+        "deleteError": "Could not delete the record.",
+        "deleteBlocked": "This person is linked to shipments and cannot be deleted.",
+        "updateSave": "Save changes",
+        "updateSuccess": "Changes saved.",
+        "updateError": "Could not save changes.",
+        "cancelEdit": "New record"
+      },
+      "newShipmentForm": {
+        "pageTitle": "New shipment",
+        "lead": "Assign inventory: product, units, one person from the list (driver or operator), and status. Origin and destination are optional; destination is not required to save. If you set a destination, the linked route is used. Data is saved to the development database.",
+        "cardTitle": "Create shipment",
+        "product": "Product (inventory)",
+        "quantity": "Units to ship",
+        "origin": "Origin",
+        "destination": "Destination (optional)",
+        "routeHintShort": "Origin and destination are optional. Lists only places from «New destination»; if empty, the default warehouse applies.",
+        "optionalRouteHint": "Origin and destination are optional. Destination is not required: leave it blank when it does not apply or when the shipment stays in the warehouse. If you only pick an origin, the record is tied to that location.",
+        "placesFromUserDestinosOnly": " Only locations you add under «New destination» appear here. If you have none yet, the dropdowns stay empty; you can leave origin and destination unset and the server will use the default warehouse when appropriate.",
+        "staffAssignment": "Driver or operator",
+        "roleConductor": "Driver",
+        "roleOperario": "Operator",
+        "initialStatus": "Initial status",
+        "save": "Save shipment",
+        "cancel": "Cancel",
+        "validationError": "Check product, units, status, and assigned person. Origin and destination are optional.",
+        "saveSuccess": "Shipment created.",
+        "saveError": "Could not create the shipment. Try again.",
+        "placeholder": {
+          "select": "Select…"
+        },
+        "destinationOpts": {
+          "ny": "Central Market, NY",
+          "chicago": "Mercy Hospital, Chicago",
+          "seattle": "City Clinic, Seattle",
+          "la": "SuperMart, LA",
+          "miami": "Regional hub, Miami"
+        },
+        "placeOpts": {
+          "defaultWarehouse": "Main warehouse"
+        }
+      },
+      "activeRouteTitle": "Active tracking",
+      "allShipmentsTitle": "All shipments",
+      "selectShipment": "Select a shipment from the table to see details.",
+      "shipmentStatus": {
+        "transit": "In transit",
+        "delivered": "Delivered",
+        "pending": "Pending"
+      },
+      "timeline": {
+        "origin": "Origin",
+        "warehouseSlot": "Storage location",
+        "current": "Current location",
+        "destination": "Destination"
+      },
+      "thermal": {
+        "safe": "Safe",
+        "risk": "At risk",
+        "boxTitle": "Thermal status",
+        "currentTemp": "Current temp: {value}",
+        "allowedRange": "Allowed range: {min} – {max}",
+        "liveHint": "Live sync with monitoring"
+      },
+      "tableCol": {
+        "product": "ID / product / driver",
+        "route": "Route",
+        "placement": "Route / storage",
+        "status": "Status",
+        "thermal": "Thermal"
+      },
+      "shipments": {
+        "S001": {
+          "product": "Fresh Atlantic Salmon (300 units)",
+          "carrier": "Jordan Lee",
+          "providerLine": "Jordan Lee • Refrigerated truck",
+          "routeFrom": "Port of Boston",
+          "routeTo": "Central Market, NY",
+          "originPlace": "Port of Boston",
+          "originTime": "Apr 25, 08:00 AM — departure",
+          "currentPlace": "Interstate 95, Connecticut",
+          "destPlace": "Central Market, NY",
+          "destTime": "Est. Apr 26, 06:00 PM — arrival"
+        },
+        "S002": {
+          "product": "Erythropoietin",
+          "carrier": "Patricia López",
+          "providerLine": "Patricia López • Active refrigerated trailer",
+          "routeFrom": "Warehouse A",
+          "routeTo": "Mercy Hospital, Chicago",
+          "originPlace": "Warehouse A",
+          "originTime": "Apr 24, 14:20 PM",
+          "currentPlace": "Near Indianapolis, IN",
+          "destPlace": "Mercy Hospital, Chicago",
+          "destTime": "Est. Apr 26, 11:00 AM"
+        },
+        "S003": {
+          "product": "Hepatitis B vaccine",
+          "carrier": "Mel Carter",
+          "providerLine": "Mel Carter • Air cargo cold chain",
+          "routeFrom": "Warehouse A",
+          "routeTo": "City Clinic, Seattle",
+          "originPlace": "Warehouse A",
+          "originTime": "Apr 20, 09:00 AM",
+          "currentPlace": "Delivered — City Clinic dock",
+          "destPlace": "City Clinic, Seattle",
+          "destTime": "Apr 22, 04:15 PM — completed"
+        },
+        "S005": {
+          "product": "Premium ice cream",
+          "carrier": "Jordan Lee",
+          "providerLine": "Jordan Lee • Scheduled pickup",
+          "routeFrom": "Warehouse C",
+          "routeTo": "SuperMart, LA",
+          "originPlace": "Warehouse C",
+          "originTime": "Pickup scheduled Apr 28",
+          "currentPlace": "Awaiting loading",
+          "destPlace": "SuperMart, LA",
+          "destTime": "Est. Apr 29, 02:00 PM"
+        }
+      }
+    },
+    "reporting": {
+      "label": "Reporting",
+      "catalogSection": "Available reports",
+      "catalogIncludesTitle": "Includes",
+      "recentSection": "Recent exports",
+      "generate": "Generate",
+      "downloadOkSummary": "Download started",
+      "downloadOkDetail": "The consolidated PDF report was generated. Check your browser downloads folder.",
+      "downloadErrSummary": "Download failed",
+      "downloadErrDetail": "Please try again or check the browser console.",
+      "stats": {
+        "a1": { "label": "Active shipments (logistics)" },
+        "a2": { "label": "Inventory SKUs / products" },
+        "a3": { "label": "Thermal log entries (monitoring)" },
+        "a4": { "label": "Alert records (alerts module)" }
+      },
+      "catalog": {
+        "c1": {
+          "title": "SafeFlow consolidated report (single PDF)",
+          "description": "Landscape PDF from your current SafeFlow data—ready to share or archive.",
+          "inc1": "Shipments: person in charge, destination, driver vs operator, warehouse or route",
+          "inc2": "Products, inventory, and thermal monitoring log",
+          "inc3": "Destinations, routes, carriers, drivers, and operators",
+          "inc4": "Cover, section titles, tables, and page numbers in the footer",
+          "inc5": "Alerts: records from the alerts module (when present in db.json)"
+        }
+      },
+      "runs": {
+        "r1": {
+          "title": "SafeFlow consolidated report (PDF)",
+          "generated": "Today, 09:14"
+        }
+      },
+      "runStatus": {
+        "ready": "Ready",
+        "processing": "Processing"
+      },
+      "table": {
+        "report": "Report",
+        "format": "Format",
+        "generated": "Generated",
+        "status": "Status",
+        "action": "Action",
+        "download": "Download",
+        "waiting": "Not ready yet"
+      }
+    }
+  },
+  "seedData": {
+    "productCategory": {
+      "medicine": "Medicine",
+      "food": "Food"
+    },
+    "places": {
+      "main_warehouse": "Main warehouse",
+      "freezer1": "Freezer 1",
+      "coldRoom": "Cold room A",
+      "sectorB": "Sector B — Fridge 2",
+      "almacen_a": "Warehouse A",
+      "almacen_b": "Warehouse B"
+    },
+    "carriers": {
+      "default_fleet": "Default fleet"
+    },
+    "vehicles": {
+      "refrigerated_truck": "Refrigerated truck"
+    },
+    "despachoTexts": {
+      "awaiting_warehouse_storage": "Awaiting handling — warehouse storage",
+      "monitoring_warehouse_storage": "On-site monitoring — warehouse storage",
+      "in_transit": "In transit",
+      "dest_time_est_route": "Est. per route — arrival"
+    }
+  }
+}

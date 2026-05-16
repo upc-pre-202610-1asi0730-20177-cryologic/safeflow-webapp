@@ -1,0 +1,125 @@
+/**
+ * PrimeVue overlays (Select, etc.) se portean a `body`. Con Material + `prefers-color-scheme: dark`
+ * los tokens del panel pueden verse negros mientras el resto de la app es claro.
+ * Paneles y estados de foco en tonos neutros (sin celeste).
+ */
+
+/* Trigger del Select */
+.p-select.p-component {
+  color-scheme: light;
+  background: #ffffff !important;
+  color: var(--sf-ui-text) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: none !important;
+}
+
+.p-select.p-component:not(.p-disabled):hover {
+  border-color: #cbd5e1 !important;
+}
+
+.p-select.p-component.p-inputwrapper-focus:not(.p-disabled),
+.p-select.p-component.p-focus:not(.p-disabled) {
+  border-color: #64748b !important;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.1) !important;
+}
+
+.p-select.p-component.p-variant-filled {
+  background: #ffffff !important;
+}
+
+.p-select.p-component .p-select-label {
+  color: var(--sf-ui-text) !important;
+  background: transparent !important;
+}
+
+.p-select.p-component .p-select-dropdown {
+  color: #64748b !important;
+  background: transparent !important;
+}
+
+.p-select-overlay.p-component {
+  color-scheme: light;
+  background: #ffffff !important;
+  color: var(--sf-ui-text) !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 10px 15px -3px rgba(15, 23, 42, 0.08),
+    0 4px 6px -4px rgba(15, 23, 42, 0.06) !important;
+}
+
+.p-select-overlay .p-select-list-container,
+.p-select-overlay .p-virtualscroller,
+.p-select-overlay .p-select-list {
+  background: #ffffff !important;
+}
+
+.p-select-overlay .p-select-option {
+  color: var(--sf-ui-text) !important;
+  background: transparent !important;
+}
+
+.p-select-overlay .p-select-option-label {
+  color: inherit !important;
+}
+
+.p-select-overlay .p-select-option:not([data-p-disabled='true']):hover,
+.p-select-overlay .p-select-option:not(.p-disabled):hover {
+  background: #f1f5f9 !important;
+  color: var(--sf-ui-text) !important;
+}
+
+.p-select-overlay .p-select-option[data-p-focused='true'],
+.p-select-overlay .p-select-option[data-p-focused] {
+  background: #e2e8f0 !important;
+  color: var(--sf-ui-text) !important;
+}
+
+.p-select-overlay .p-select-option.p-select-option-selected,
+.p-select-overlay .p-select-option[data-p-selected='true'],
+.p-select-overlay .p-select-option[data-p-selected] {
+  background: #e2e8f0 !important;
+  color: var(--sf-ui-text) !important;
+  font-weight: 600;
+}
+
+.p-select-overlay .p-select-option.p-select-option-selected.p-focus {
+  background: #cbd5e1 !important;
+  color: var(--sf-ui-text) !important;
+}
+
+.p-select-overlay .p-select-option[data-p-disabled='true'],
+.p-select-overlay .p-select-option[data-p-disabled] {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+.p-multiselect-overlay.p-component {
+  color-scheme: light;
+  background: #ffffff !important;
+  color: var(--sf-ui-text) !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 10px 15px -3px rgba(15, 23, 42, 0.08),
+    0 4px 6px -4px rgba(15, 23, 42, 0.06) !important;
+}
+
+.p-multiselect-overlay .p-multiselect-list-container,
+.p-multiselect-overlay .p-multiselect-list {
+  background: #ffffff !important;
+}
+
+.p-multiselect-overlay .p-multiselect-option {
+  color: var(--sf-ui-text) !important;
+  background: transparent !important;
+}
+
+.p-multiselect-overlay .p-multiselect-option:not(.p-disabled):hover {
+  background: #f1f5f9 !important;
+}
+
+.p-multiselect-overlay .p-multiselect-option.p-focus {
+  background: #e2e8f0 !important;
+  color: var(--sf-ui-text) !important;
+}

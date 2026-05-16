@@ -1,0 +1,697 @@
+{
+  "shell": {
+    "appName": "SafeFlow",
+    "contextsSubtitle": "Módulos del producto (contextos y soporte)",
+    "modules": "Módulos",
+    "collapse": "Contraer",
+    "expandMenu": "Expandir menú",
+    "systemStatus": "Estado del sistema",
+    "operational": "Operativo",
+    "searchPlaceholder": "Buscar en el contexto actual…",
+    "notifications": "Notificaciones",
+    "profile": "Perfil",
+    "profilePage": {
+      "title": "Perfil",
+      "back": "Volver",
+      "summaryTitle": "Resumen de perfil",
+      "underConstructionTitle": "Esta parte del perfil está en proceso de construcción",
+      "underConstructionBody": "La pantalla de perfil que ves aún no está terminada. Varios campos y acciones son de demostración: no guardan datos reales ni están conectados al servidor. Estamos completando cómo se cargará tu cuenta, cómo se validarán los cambios y cómo encajará todo con los permisos del sistema. Gracias por la paciencia mientras cerramos esta sección de SafeFlow.",
+      "personalTitle": "Información personal",
+      "accountTitle": "Detalles de la cuenta",
+      "demoName": "Alejandro González Ruiz",
+      "demoId": "ID: ADM-98765",
+      "lastUpdated": "Última actualización: 15/10/2023",
+      "statusActive": "ACTIVO",
+      "fullName": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "birthDate": "Fecha de nacimiento",
+      "gender": "Género",
+      "genderPlaceholder": "Seleccionar",
+      "genderOption": {
+        "m": "Masculino",
+        "f": "Femenino",
+        "o": "Otro"
+      },
+      "address": "Dirección",
+      "addressPlaceholder": "Calle, ciudad, código postal…",
+      "userRole": "Rol de usuario",
+      "department": "Departamento",
+      "selectPlaceholder": "Seleccionar",
+      "roles": {
+        "admin": "Administrador",
+        "operator": "Operador",
+        "viewer": "Consulta"
+      },
+      "departments": {
+        "logistics": "Logística",
+        "qa": "Calidad cadena de frío",
+        "ops": "Operaciones"
+      },
+      "password": "Contraseña",
+      "changePassword": "Cambiar contraseña",
+      "profilePhoto": "Foto de perfil",
+      "uploadPhoto": "Subir nueva foto",
+      "save": "Guardar cambios",
+      "cancel": "Cancelar"
+    },
+    "profileDialog": {
+      "title": "Editar perfil",
+      "lead": "Actualiza los datos de tu cuenta. Los cambios aún no se guardan.",
+      "fullName": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "organization": "Organización",
+      "role": "Rol / cargo",
+      "save": "Guardar cambios"
+    },
+    "logout": "Cerrar sesión",
+    "stubLead": "Pantalla en construcción. Sustituye por tu implementación en este bounded context."
+  },
+  "footer": {
+    "line": "© SafeFlow — visibilidad de la cadena de suministro."
+  },
+  "auth": {
+    "login": {
+      "heroTitle": "Entrar a SafeFlow",
+      "heroSubtitle": "Monitoreo y gestión de cadena de frío",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "emailPlaceholder": "admin{'@'}safeflow.com",
+      "remember": "Recordarme",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "signIn": "Entrar",
+      "signingIn": "Entrando…",
+      "divider": "¿Nuevo en SafeFlow?",
+      "createAccount": "Crear una cuenta",
+      "errorRequired": "Introduce correo y contraseña."
+    },
+    "register": {
+      "heroTitle": "Crea tu cuenta en SafeFlow",
+      "heroSubtitle": "Monitoreo y gestión de cadena de frío",
+      "name": "Nombre completo",
+      "namePlaceholder": "María García",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "passwordPlaceholder": "Mínimo 6 caracteres",
+      "confirm": "Confirmar contraseña",
+      "confirmPlaceholder": "Repite la contraseña",
+      "submit": "Crear cuenta",
+      "creating": "Creando…",
+      "divider": "¿Ya tienes cuenta?",
+      "signIn": "Iniciar sesión",
+      "errorName": "Indica tu nombre.",
+      "errorEmail": "Indica un correo válido.",
+      "errorPasswordLen": "La contraseña debe tener al menos 6 caracteres.",
+      "errorPasswordMatch": "Las contraseñas no coinciden."
+    }
+  },
+  "notFound": {
+    "title": "No encontrado",
+    "message": "La ruta no existe en SafeFlow.",
+    "backAlerts": "Ir a Alertas",
+    "backAnalytics": "Ir a Analítica"
+  },
+  "bounded": {
+    "alerts": {
+      "label": "Alertas",
+      "pageLead": "",
+      "emptyFeed": "Ningún producto monitoreado está fuera de su rango permitido en este momento.",
+      "observe": "En observación",
+      "observeDisabledHint": "Ya está en observación: la lectura está en pausa y puedes usar los datos de contacto.",
+      "observationBanner": "En observación — lectura térmica en pausa. El despacho, ubicación y contacto siguen aquí para que puedas coordinar.",
+      "solved": "Solucionado",
+      "pausedSectionTitle": "En observación (lectura térmica en pausa)",
+      "pausedSectionLead": "No generan nuevas alertas térmicas hasta marcarlos como solucionados.",
+      "resolve": "Marcar como resuelta",
+      "kpi": {
+        "shipments": { "title": "Ítems monitoreados" },
+        "completed": { "title": "Resueltas (histórico)" },
+        "transit": { "title": "Alertas térmicas abiertas" },
+        "delayed": { "title": "Fuera de rango (detectados)" }
+      },
+      "thermal": {
+        "title": "{product} está fuera del rango térmico permitido."
+      },
+      "card": {
+        "tempIntro": "Temperatura actual ",
+        "limitPart": "(Límite: {value})",
+        "where": "Ubicación",
+        "personInCharge": "Persona de contacto",
+        "contact": "Contacto",
+        "dispatchId": "Despacho {id}"
+      },
+      "types": {
+        "temperatura_alta": "Temperatura alta",
+        "temperatura_baja": "Temperatura baja",
+        "vencimiento": "Vencimiento / baja"
+      },
+      "locations": {
+        "transit": "En tránsito (despacho vinculado)",
+        "warehouse": "Almacén"
+      },
+      "time": {
+        "recent": "Evento reciente"
+      },
+      "items": {
+        "a1": {
+          "title": "Vacunas COVID-19",
+          "location": "Transporte • Ruta 4 - Camión AB-123",
+          "time": "14:32:05 - 25 Abr 2026"
+        },
+        "a2": {
+          "title": "Insulina glargina",
+          "location": "Almacén • Sector B - Refrigerador 2",
+          "time": "13:18:42 - 25 Abr 2026"
+        },
+        "a3": {
+          "title": "Lácteos premium",
+          "location": "Transporte • Ruta 12 - Furgón XY-987",
+          "time": "12:05:11 - 25 Abr 2026"
+        }
+      }
+    },
+    "analytics": {
+      "label": "Analítica",
+      "kpi": {
+        "shipments": { "title": "Total envíos" },
+        "completed": { "title": "Entregas completadas" },
+        "transit": { "title": "En tránsito" },
+        "delayed": { "title": "Retrasados" }
+      },
+      "chart": {
+        "title": "Envíos por semana",
+        "periodWeek": "Esta semana",
+        "periodMonth": "Mes pasado",
+        "placeholderHint": "Aquí se mostrará el gráfico (conecta tu fuente de datos)."
+      },
+      "deliveryStatus": {
+        "title": "Estado de entregas",
+        "lead": "Distribución actual de todos los envíos activos.",
+        "legend": {
+          "delivered": "Entregado",
+          "transit": "En tránsito",
+          "pending": "Pendiente",
+          "delayed": "Retrasado"
+        }
+      },
+      "recent": {
+        "title": "Envíos recientes",
+        "viewAll": "Ver todos"
+      },
+      "table": {
+        "id": "ID envío",
+        "destination": "Destino",
+        "status": "Estado",
+        "date": "Fecha",
+        "driver": "Chofer",
+        "action": "Acción",
+        "view": "Ver"
+      },
+      "shipmentStatus": {
+        "delivered": "Entregado",
+        "transit": "En tránsito",
+        "pending": "Pendiente",
+        "delayed": "Retrasado"
+      },
+      "shipments": {
+        "s1": {
+          "dest": "Madrid",
+          "date": "24 oct 2023",
+          "carrier": "DHL Express"
+        },
+        "s2": {
+          "dest": "Barcelona",
+          "date": "24 oct 2023",
+          "carrier": "FedEx"
+        },
+        "s3": {
+          "dest": "Valencia",
+          "date": "23 oct 2023",
+          "carrier": "UPS"
+        },
+        "s4": {
+          "dest": "Sevilla",
+          "date": "23 oct 2023",
+          "carrier": "DHL Express"
+        },
+        "s5": {
+          "dest": "Bilbao",
+          "date": "22 oct 2023",
+          "carrier": "FedEx"
+        }
+      },
+      "fleetStatus": {
+        "on_route": "En ruta",
+        "available": "Disponible",
+        "maintenance": "Mantenimiento"
+      },
+      "fleet": {
+        "title": "Rendimiento de flota",
+        "viewMap": "Ver mapa de flota",
+        "v1": { "line": "V-1042 — Miguel A." },
+        "v2": { "line": "V-2201 — Laura P." },
+        "v3": { "line": "V-1188 — Carlos R." },
+        "v4": { "line": "V-3004 — Ana M." }
+      }
+    },
+    "environmental": {
+      "label": "Monitoreo",
+      "pageLead": "Monitoreo en tiempo real de envíos sensibles y almacenamiento en frío.",
+      "addPoint": "Añadir punto de monitoreo",
+      "kpi": {
+        "shipments": { "title": "Total envíos" },
+        "completed": { "title": "Entregas completadas" },
+        "transit": { "title": "En tránsito" },
+        "delayed": { "title": "Retrasados" }
+      },
+      "monitorCards": {
+        "rangeCaption": "Rango objetivo",
+        "personLabel": "Persona encargada",
+        "destLabel": "Destino",
+        "roleLabel": "Conductor u operario",
+        "warehouseLabel": "Almacén",
+        "destWarehouseMode": "En almacén (en sitio, sin salida)",
+        "warehouseDash": "—",
+        "role": {
+          "conductor": "Conductor",
+          "operario": "Operario",
+          "none": "Sin asignar"
+        },
+        "badge": {
+          "safe": "Seguro",
+          "warning": "En riesgo",
+          "observation": "Lectura en pausa"
+        },
+        "m1": { "title": "Lote vacunas A-20" },
+        "m2": { "title": "Paquete insulina B-118" },
+        "m3": { "title": "Transporte órganos D-99" },
+        "m4": { "title": "Muestra sangre C-042" },
+        "m5": { "title": "Reactivos serología K-221" },
+        "m6": { "title": "Lote plasma congelado F-55" },
+        "m7": { "title": "Lote vacunas pediátricas P-07" },
+        "m8": { "title": "Surtido lácteos cámara fría" },
+        "m9": { "title": "Transporte muestra lab. S-903" }
+      },
+      "monitorPoints": {
+        "PROD-001": "Vacunas COVID-19",
+        "PROD-002": "Insulina glargina",
+        "PROD-003": "Mariscos frescos",
+        "PROD-004": "Lácteos premium",
+        "PROD-005": "Plasma sanguíneo",
+        "PROD-006": "Reactivos de lab.",
+        "PROD-007": "dddd",
+        "PROD-008": "Hielo"
+      },
+      "simulation": {
+        "secretAria": "Simulación térmica (sincroniza inventario, logística, alertas, monitoreo)",
+        "secretTitleOff": "Simulación: varía temperaturas en toda la app (mismos valores en monitoreo, inventario, logística, alertas). Esquina inferior derecha — pulsa de nuevo para detener.",
+        "secretTitleOn": "Detener simulación (esquina inferior derecha)"
+      }
+    },
+    "inventory": {
+      "label": "Inventario",
+      "pageLead": "Vista general de stock en cadena de frío — productos por ubicación.",
+      "addItem": "Añadir artículo",
+      "addStockLine": "Añadir stock",
+      "stockLine": {
+        "pageTitle": "Stock en otro almacén",
+        "lead": "",
+        "cardTitle": "Línea de stock",
+        "product": "Producto",
+        "save": "Añadir línea de stock",
+        "saveSuccess": "Línea guardada en server/db.json.",
+        "saveError": "No se pudo guardar. En producción define VITE_API_BASE_URL (p. ej. MockAPI). En local usa npm run dev o npm run dev:mockapi.",
+        "validationError": "Elige producto, ubicación y cantidad.",
+        "noProducts": "Aún no hay productos en inventario. Primero añade un producto."
+      },
+      "newProduct": {
+        "pageTitle": "Nuevo producto",
+        "lead": "",
+        "cardTitle": "Datos del producto",
+        "productName": "Nombre",
+        "lote": "Lote",
+        "fechaVencimiento": "Fecha de vencimiento",
+        "fechaIngreso": "Fecha de ingreso",
+        "tempMin": "Temperatura mínima",
+        "tempMax": "Temperatura máxima",
+        "save": "Añadir producto",
+        "cancel": "Cancelar",
+        "saveSuccess": "Producto guardado en server/db.json.",
+        "saveError": "No se pudo guardar. En producción define VITE_API_BASE_URL (p. ej. MockAPI). En local usa npm run dev o npm run dev:mockapi.",
+        "validationError": "Completa todos los campos.",
+        "placeholder": {
+          "name": "p. ej. Insulina glargina",
+          "lote": "p. ej. LOT-001",
+          "quantity": "0",
+          "temp": "°C",
+          "select": "Seleccionar…"
+        },
+        "category": {
+          "medicine": "Medicamento",
+          "food": "Alimento"
+        },
+        "location": {
+          "mainWarehouse": "Almacén principal",
+          "freezer1": "Congelador 1",
+          "coldRoom": "Cámara fría A",
+          "sectorB": "Sector B — Refri 2",
+          "almacenA": "Almacen A",
+          "almacenB": "Almacen B"
+        }
+      },
+      "table": {
+        "idProducto": "ID producto",
+        "nombre": "Nombre",
+        "product": "Producto",
+        "category": "Categoría",
+        "temperature": "Rango térmico",
+        "tempMin": "Temp. mín.",
+        "tempMax": "Temp. máx.",
+        "fechaVencimiento": "Fecha vencimiento",
+        "fechaIngreso": "Fecha ingreso",
+        "lote": "Lote",
+        "quantity": "Cantidad",
+        "location": "Ubicación",
+        "status": "Estado"
+      },
+      "status": {
+        "available": "Disponible",
+        "risk": "En riesgo",
+        "inactive": "Inactivo",
+        "discarded": "Desechado",
+        "in_transit": "En tránsito"
+      },
+      "rows": {
+        "r1": {
+          "name": "Vacunas COVID-19",
+          "category": "Medicamento",
+          "location": "Almacén principal",
+          "temp": "2°C a 8°C"
+        },
+        "r2": {
+          "name": "Insulina glargina",
+          "category": "Medicamento",
+          "location": "Sector B - Refri 2",
+          "temp": "2°C a 8°C"
+        },
+        "r3": {
+          "name": "Mariscos frescos",
+          "category": "Alimento",
+          "location": "Congelador 1",
+          "temp": "-20°C a -18°C"
+        },
+        "r4": {
+          "name": "Lácteos premium",
+          "category": "Alimento",
+          "location": "Cámara fría A",
+          "temp": "2°C a 6°C"
+        },
+        "r5": {
+          "name": "Plasma sanguíneo",
+          "category": "Medicamento",
+          "location": "Congelador médico",
+          "temp": "-30°C a -25°C"
+        },
+        "r6": {
+          "name": "Reactivos de lab.",
+          "category": "Medicamento",
+          "location": "Sector C - Estante 4",
+          "temp": "2°C a 8°C"
+        }
+      }
+    },
+    "logistics": {
+      "label": "Logística",
+      "trackingTitle": "Logística y seguimiento",
+      "newShipment": "Nuevo envío",
+      "newDestination": "Nuevo destino",
+      "newDriver": "Conductor u operario",
+      "newDestinationForm": {
+        "pageTitle": "Nuevo destino",
+        "lead": "Solo guarda el nombre del lugar. En otros formularios podrás usarlo como origen o destino.",
+        "cardTitle": "Crear destino",
+        "codigo": "Código de ruta",
+        "codigoPlaceholder": "p. ej. hub_regional_norte",
+        "codigoHint": "Letras minúsculas, números y guiones bajos. Debe empezar por letra. Debe ser único.",
+        "nombre": "Nombre del destino",
+        "nombreHint": "El servidor genera un código interno para enlazar envíos; tú solo defines el nombre visible.",
+        "origen": "Origen (opcional)",
+        "origenPlaceholder": "Vacío = almacén por defecto",
+        "distanciaKm": "Distancia (km)",
+        "tiempoHoras": "Tiempo estimado (horas)",
+        "save": "Guardar destino",
+        "cancel": "Cancelar",
+        "validationError": "Escribe un nombre de destino.",
+        "saveSuccess": "Destino guardado en server/db.json.",
+        "saveError": "No se pudo guardar. En producción define VITE_API_BASE_URL (p. ej. MockAPI). En local usa npm run dev o npm run dev:mockapi.",
+        "errorCodigoExists": "Ya existe un destino con un código equivalente a ese nombre. Cambia el nombre.",
+        "listTitle": "Destinos registrados",
+        "listEmpty": "Aún no hay destinos personalizados.",
+        "colCodigo": "Código",
+        "colNombre": "Nombre",
+        "colKm": "Km",
+        "colHoras": "Horas",
+        "colActions": "Acciones",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "deleteHeader": "Eliminar destino",
+        "deleteMessage": "¿Eliminar «{name}»?",
+        "deleteSuccess": "Destino eliminado.",
+        "deleteError": "No se pudo eliminar el destino.",
+        "deleteBlocked": "Hay envíos que usan esta ruta; no se puede eliminar.",
+        "updateSave": "Guardar cambios",
+        "updateSuccess": "Cambios guardados.",
+        "updateError": "No se pudieron guardar los cambios.",
+        "cancelEdit": "Nuevo destino"
+      },
+      "newDriverForm": {
+        "pageTitle": "Conductor u operario",
+        "lead": "Registra un conductor u operario. Los conductores aparecen al crear un envío.",
+        "cardTitle": "Datos de la persona",
+        "codigo": "Código",
+        "codigoPlaceholder": "p. ej. maria_garcia",
+        "codigoHint": "Letras minúsculas, números y guiones bajos. Único por persona.",
+        "nombre": "Nombre",
+        "rol": "Operario o conductor",
+        "rolConductor": "Conductor",
+        "rolOperario": "Operario",
+        "licencia": "Nº de licencia",
+        "licenciaHint": "Opcional.",
+        "contacto": "Teléfono o correo",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "validationError": "Completa código y nombre.",
+        "saveSuccess": "Registro guardado en server/db.json.",
+        "saveError": "No se pudo guardar. En producción define VITE_API_BASE_URL (p. ej. MockAPI). En local usa npm run dev o npm run dev:mockapi.",
+        "errorCodigoExists": "Ese código ya está en uso.",
+        "errorFleet": "No hay flota configurada en la base de datos (falta al menos una línea en logística).",
+        "listTitle": "Personas registradas",
+        "listEmpty": "Aún no hay registros.",
+        "colCodigo": "Código",
+        "colNombre": "Nombre",
+        "colRol": "Rol",
+        "colLicencia": "Licencia",
+        "colContacto": "Contacto",
+        "colActions": "Acciones",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "deleteHeader": "Eliminar registro",
+        "deleteMessage": "¿Eliminar a {name} ({code})?",
+        "deleteSuccess": "Registro eliminado.",
+        "deleteError": "No se pudo eliminar el registro.",
+        "deleteBlocked": "Esta persona tiene envíos asociados; no se puede eliminar.",
+        "updateSave": "Guardar cambios",
+        "updateSuccess": "Cambios guardados.",
+        "updateError": "No se pudieron guardar los cambios.",
+        "cancelEdit": "Nuevo registro"
+      },
+      "newShipmentForm": {
+        "pageTitle": "Nuevo envío",
+        "lead": "Asigna inventario: producto, unidades, una persona de la lista (conductor u operario), y estado. Origen y destino son opcionales; el destino no es obligatorio para guardar. Si indicas destino, se usa la ruta asociada. Los datos se guardan en la base de desarrollo.",
+        "cardTitle": "Crear envío",
+        "product": "Producto (inventario)",
+        "quantity": "Unidades a enviar",
+        "origin": "Origen",
+        "destination": "Destino (opcional)",
+        "routeHintShort": "Origen y destino opcionales. Solo aparecen lugares de «Nuevo destino»; si las listas están vacías, se usa el almacén por defecto.",
+        "optionalRouteHint": "Origen y destino son opcionales. El destino no es obligatorio: déjalo vacío si no aplica o si el envío se queda en almacén. Si solo eliges origen, el registro queda anclado a ese punto.",
+        "placesFromUserDestinosOnly": " Solo se listan destinos que hayas registrado en «Nuevo destino». Si aún no hay ninguno, los desplegables quedarán vacíos; puedes dejar origen y destino sin elegir y el servidor usará el almacén por defecto cuando corresponda.",
+        "staffAssignment": "Conductor u operario",
+        "roleConductor": "Conductor",
+        "roleOperario": "Operario",
+        "initialStatus": "Estado inicial",
+        "save": "Guardar envío",
+        "cancel": "Cancelar",
+        "validationError": "Revisa producto, unidades, estado y la persona asignada. Origen y destino son opcionales.",
+        "saveSuccess": "Envío creado.",
+        "saveError": "No se pudo crear el envío. Inténtalo de nuevo.",
+        "placeholder": {
+          "select": "Seleccionar…"
+        },
+        "destinationOpts": {
+          "ny": "Mercado central, NY",
+          "chicago": "Hospital Mercy, Chicago",
+          "seattle": "Clínica municipal, Seattle",
+          "la": "SuperMart, LA",
+          "miami": "Hub regional, Miami"
+        },
+        "placeOpts": {
+          "defaultWarehouse": "Almacén principal"
+        }
+      },
+      "activeRouteTitle": "Seguimiento activo",
+      "allShipmentsTitle": "Todos los envíos",
+      "selectShipment": "Selecciona un envío en la tabla para ver el detalle.",
+      "shipmentStatus": {
+        "transit": "En tránsito",
+        "delivered": "Entregado",
+        "pending": "Pendiente"
+      },
+      "timeline": {
+        "origin": "Origen",
+        "warehouseSlot": "Ubicación en almacén",
+        "current": "Ubicación actual",
+        "destination": "Destino"
+      },
+      "thermal": {
+        "safe": "Seguro",
+        "risk": "En riesgo",
+        "boxTitle": "Estado térmico",
+        "currentTemp": "Temperatura actual: {value}",
+        "allowedRange": "Rango permitido: {min} – {max}",
+        "liveHint": "Actualizando con monitoreo en vivo"
+      },
+      "tableCol": {
+        "product": "ID / producto / chofer",
+        "route": "Ruta",
+        "placement": "Ruta / almacén",
+        "status": "Estado",
+        "thermal": "Térmico"
+      },
+      "shipments": {
+        "S001": {
+          "product": "Salmón atlántico fresco (300 uds.)",
+          "carrier": "Jordan Lee",
+          "providerLine": "Jordan Lee • Camión refrigerado",
+          "routeFrom": "Puerto de Boston",
+          "routeTo": "Central Market, NY",
+          "originPlace": "Puerto de Boston",
+          "originTime": "25 abr, 08:00 — salida",
+          "currentPlace": "Interestatal 95, Connecticut",
+          "destPlace": "Central Market, NY",
+          "destTime": "Est. 26 abr, 18:00 — llegada"
+        },
+        "S002": {
+          "product": "Eritropoyetina",
+          "carrier": "Patricia López",
+          "providerLine": "Patricia López • Tráiler refrigerado activo",
+          "routeFrom": "Almacén A",
+          "routeTo": "Hospital Mercy, Chicago",
+          "originPlace": "Almacén A",
+          "originTime": "24 abr, 14:20",
+          "currentPlace": "Cerca de Indianápolis, IN",
+          "destPlace": "Hospital Mercy, Chicago",
+          "destTime": "Est. 26 abr, 11:00"
+        },
+        "S003": {
+          "product": "Vacuna hepatitis B",
+          "carrier": "Mel Carter",
+          "providerLine": "Mel Carter • Cadena de frío aérea",
+          "routeFrom": "Almacén A",
+          "routeTo": "Clínica municipal, Seattle",
+          "originPlace": "Almacén A",
+          "originTime": "20 abr, 09:00",
+          "currentPlace": "Entregado — muelle clínica",
+          "destPlace": "Clínica municipal, Seattle",
+          "destTime": "22 abr, 16:15 — finalizado"
+        },
+        "S005": {
+          "product": "Helado premium",
+          "carrier": "Jordan Lee",
+          "providerLine": "Jordan Lee • Recogida programada",
+          "routeFrom": "Almacén C",
+          "routeTo": "SuperMart, LA",
+          "originPlace": "Almacén C",
+          "originTime": "Recogida prog. 28 abr",
+          "currentPlace": "En espera de carga",
+          "destPlace": "SuperMart, LA",
+          "destTime": "Est. 29 abr, 14:00"
+        }
+      }
+    },
+    "reporting": {
+      "label": "Informes",
+      "catalogSection": "Informes disponibles",
+      "catalogIncludesTitle": "Incluye",
+      "recentSection": "Exportaciones recientes",
+      "generate": "Generar",
+      "downloadOkSummary": "Descarga iniciada",
+      "downloadOkDetail": "Se ha generado el informe integral en PDF. Revisa la carpeta de descargas del navegador.",
+      "downloadErrSummary": "No se pudo descargar",
+      "downloadErrDetail": "Vuelve a intentar o revisa la consola del navegador.",
+      "stats": {
+        "a1": { "label": "Despachos en seguimiento (logística)" },
+        "a2": { "label": "Productos / SKUs en inventario" },
+        "a3": { "label": "Registros térmicos (monitoreo)" },
+        "a4": { "label": "Registros de alertas (módulo Alertas)" }
+      },
+      "catalog": {
+        "c1": {
+          "title": "Informe integral SafeFlow (único PDF)",
+          "description": "PDF horizontal con los datos actuales de SafeFlow, listo para compartir o archivar.",
+          "inc1": "Despachos: persona a cargo, destino, conductor u operario, almacén o ruta",
+          "inc2": "Productos, inventario y registro de monitoreo térmico",
+          "inc3": "Destinos, rutas, transportistas, conductores y operarios",
+          "inc4": "Portada, secciones tituladas, tablas y numeración al pie",
+          "inc5": "Alertas: registros del módulo Alertas (si existen en db.json)"
+        }
+      },
+      "runs": {
+        "r1": {
+          "title": "Informe integral SafeFlow (PDF)",
+          "generated": "Hoy, 09:14"
+        }
+      },
+      "runStatus": {
+        "ready": "Listo",
+        "processing": "Procesando"
+      },
+      "table": {
+        "report": "Informe",
+        "format": "Formato",
+        "generated": "Generado",
+        "status": "Estado",
+        "action": "Acción",
+        "download": "Descargar",
+        "waiting": "Aún no disponible"
+      }
+    }
+  },
+  "seedData": {
+    "productCategory": {
+      "medicine": "Medicamento",
+      "food": "Alimento"
+    },
+    "places": {
+      "main_warehouse": "Almacén principal",
+      "freezer1": "Congelador 1",
+      "coldRoom": "Cámara fría A",
+      "sectorB": "Sector B - Refri 2",
+      "almacen_a": "Almacén A",
+      "almacen_b": "Almacén B"
+    },
+    "carriers": {
+      "default_fleet": "Flota predeterminada"
+    },
+    "vehicles": {
+      "refrigerated_truck": "Camión refrigerado"
+    },
+    "despachoTexts": {
+      "awaiting_warehouse_storage": "En espera — almacenaje en almacén",
+      "monitoring_warehouse_storage": "Monitoreo en sitio — almacenaje",
+      "in_transit": "En tránsito",
+      "dest_time_est_route": "Est. según ruta — llegada"
+    }
+  }
+}
