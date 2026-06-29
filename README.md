@@ -1,3 +1,53 @@
+
+
+<div align="center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/UPC_logo_transparente.png"><br>
+</div>
+<h3 align="center"> Universidad Peruana de Ciencias Aplicadas </h3>
+
+<h3 align="center">Carrera de Ingeniería de Software </h3>
+
+<h3 align="center">1ASI0730 </h3>
+<h3 align="center">Aplicaciones Web </h3>
+<h3 align="center"> NRC </h3>
+<h3 align="center"> 20177 </h3>
+
+<h3 align="center"> Informe de Trabajo Final</h3>
+
+
+<h3 align="center"> Docente</h3>
+<h3 align="center"> Jose Miguel, Flores Ingaruca </h3>
+
+
+<h3 align="center"> Equipo </h3>
+<h3 align="center"> Cryologic Systems </h3>
+
+<h3 align="center"> Proyecto</h3>
+<h3 align="center"> SafeFlow </h3>
+
+<h3 align="center"> Integrantes </h3>
+
+<div align = "center">
+ 
+| Code       |      Member |
+| :---:      |     :--- |
+| U202218531 | Andy Alejandro Mio Mejia |
+| U202116018 | Mel Andree Orellana Rodriguez |
+| U202114701 | Angel Guillermo Berrospi Marin |
+| U20221C803 | Anhelo Rodrigo Rocca Leon |
+| U202316049 | Jefferson Bayron Morales Yapuchura |
+
+
+</div>
+
+<h3 align="center">Periodo 202610</h3>
+<h3 align="center">Junio 2026</h3>
+
+
+<div style="page-break-after: always;"></div>
+
+
+
 # SafeFlow Web Application (Frontend)
 
 **SafeFlow** es una aplicación web moderna diseñada para el **monitoreo y gestión de la cadena de frío**, proporcionando visibilidad integral de extremo a extremo de la cadena de suministro para productos altamente sensibles a la temperatura (como vacunas, medicamentos, alimentos frescos y reactivos de laboratorio).
