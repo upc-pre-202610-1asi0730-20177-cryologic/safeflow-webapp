@@ -84,7 +84,8 @@
       "signingIn": "Signing in…",
       "divider": "New to SafeFlow?",
       "createAccount": "Create an account",
-      "errorRequired": "Enter your email and password."
+      "errorRequired": "Enter your email and password.",
+      "errorInvalid": "Invalid email or password."
     },
     "register": {
       "heroTitle": "Create your SafeFlow account",
@@ -103,7 +104,9 @@
       "errorName": "Enter your name.",
       "errorEmail": "Enter a valid email.",
       "errorPasswordLen": "Password must be at least 6 characters.",
-      "errorPasswordMatch": "Passwords do not match."
+      "errorPasswordMatch": "Passwords do not match.",
+      "errorUsernameTaken": "That email is already registered.",
+      "errorGeneric": "Could not create the account. Please try again."
     }
   },
   "notFound": {

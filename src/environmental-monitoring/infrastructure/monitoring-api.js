@@ -15,7 +15,13 @@ import {
   enrichShipmentsForMonitoring,
 } from './monitoring-live-payload.js'
 import { thermalStatusFromReading } from '../../shared/domain/thermal-range.js'
-import { getApiBaseUrl, shouldAppendSameOriginCacheBuster } from '../../shared/infrastructure/base-api.js'
+import {
+  BaseApi,
+  getApiBaseUrl,
+  isRemoteApiBaseConfigured,
+  jsonAuthHeaders,
+  shouldAppendSameOriginCacheBuster,
+} from '../../shared/infrastructure/base-api.js'
 import { toLocalizedText } from '../../shared/infrastructure/seed-data-localized.js'
 
 const monitoringSnapshotPath = import.meta.env.VITE_MONITORING_DB_SNAPSHOT_PATH?.trim() || ''
@@ -56,7 +62,7 @@ async function loadMonitoringSnapshotFromRemote(path) {
   async function tryFetch(url) {
     try {
       const res = await fetch(url, {
-        headers: { Accept: 'application/json' },
+        headers: jsonAuthHeaders(),
         cache: 'no-store',
       })
       if (!res.ok) return null
@@ -102,7 +108,7 @@ async function loadDbPayload() {
     const qs = shouldAppendSameOriginCacheBuster() ? `?_=${Date.now()}` : ''
     const url = `${base}/api/inventory${qs}`
     const res = await fetch(url, {
-      headers: { Accept: 'application/json' },
+      headers: jsonAuthHeaders(),
       cache: 'no-store',
     })
     if (!res.ok) {
@@ -407,6 +413,21 @@ function buildMonitorCards(data) {
 }
 
 export async function fetchMonitoringDashboard() {
+  if (isRemoteApiBaseConfigured()) {
+    try {
+      const api = new BaseApi()
+      const { data } = await api.http.get('api/monitoring/dashboard')
+      if (data && typeof data === 'object') {
+        return {
+          kpis: Array.isArray(data.kpis) ? data.kpis : [],
+          monitorCards: Array.isArray(data.monitorCards) ? data.monitorCards : [],
+        }
+      }
+    } catch (e) {
+      console.error('[monitoring] GET api/monitoring/dashboard falló; usando agregación local', e)
+    }
+  }
+
   const data = await loadDbPayload()
   const monitorCards = buildMonitorCards(data)
   return {

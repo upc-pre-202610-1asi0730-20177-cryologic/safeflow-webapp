@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
-import { setSessionAuthed } from '@/shared/config/session-auth.js'
+import { clearAuthSession } from '@/shared/config/session-auth.js'
 import { LogOut } from 'lucide-vue-next'
 import { useI18n } from 'vue-i18n'
 import { contextByPath } from '../../config/navigation.js'
@@ -12,7 +12,7 @@ const route = useRoute()
 const router = useRouter()
 
 function logout() {
-  setSessionAuthed(false)
+  clearAuthSession()
   router.push({ name: 'login' })
 }
 

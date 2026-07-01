@@ -84,7 +84,8 @@
       "signingIn": "Entrando…",
       "divider": "¿Nuevo en SafeFlow?",
       "createAccount": "Crear una cuenta",
-      "errorRequired": "Introduce correo y contraseña."
+      "errorRequired": "Introduce correo y contraseña.",
+      "errorInvalid": "Correo o contraseña incorrectos."
     },
     "register": {
       "heroTitle": "Crea tu cuenta en SafeFlow",
@@ -103,7 +104,9 @@
       "errorName": "Indica tu nombre.",
       "errorEmail": "Indica un correo válido.",
       "errorPasswordLen": "La contraseña debe tener al menos 6 caracteres.",
-      "errorPasswordMatch": "Las contraseñas no coinciden."
+      "errorPasswordMatch": "Las contraseñas no coinciden.",
+      "errorUsernameTaken": "Ese correo ya está registrado.",
+      "errorGeneric": "No se pudo crear la cuenta. Inténtalo de nuevo."
     }
   },
   "notFound": {

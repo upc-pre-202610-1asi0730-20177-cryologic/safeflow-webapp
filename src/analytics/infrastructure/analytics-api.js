@@ -1,9 +1,9 @@
 /**
- * Analítica: KPIs, mezcla de estados, envíos recientes, flota y serie temporal
- * desde la API de logística (mismos datos que Inventario / Logística) con fallback a `db.json`.
+ * Analítica: `GET /api/analytics/dashboard` (Azure) o agregación local vía logística / db.json.
  */
 
 import db from '../../../server/db.json'
+import { BaseApi, isRemoteApiBaseConfigured } from '../../shared/infrastructure/base-api.js'
 import { listLegacyShipmentsFromDb } from '../../logistics/infrastructure/logistics-aggregate.js'
 import { logisticsApi } from '../../logistics/infrastructure/logistics-api.js'
 import { toLocalizedText } from '../../shared/infrastructure/seed-data-localized.js'
@@ -27,20 +27,8 @@ function buildKpis(shipments) {
   const neutralTrend = { trendPct: 0, trendUp: true, trendTone: 'positive' }
 
   return [
-    {
-      id: 'shipments',
-      value: total,
-      ...neutralTrend,
-      tone: 'blue',
-      icon: 'package',
-    },
-    {
-      id: 'completed',
-      value: completed,
-      ...neutralTrend,
-      tone: 'green',
-      icon: 'check',
-    },
+    { id: 'shipments', value: total, ...neutralTrend, tone: 'blue', icon: 'package' },
+    { id: 'completed', value: completed, ...neutralTrend, tone: 'green', icon: 'check' },
     {
       id: 'transit',
       value: transit,
@@ -109,7 +97,6 @@ function buildChartMonthKeys(rows) {
   return keys.slice(-6).map((key) => ({ key, value: counts.get(key) ?? 0 }))
 }
 
-/** @param {object} carrier @param {object} chofer */
 function carrierMatchesChofer(carrier, chofer) {
   const cn = String(carrier?.en ?? carrier?.es ?? '')
     .toLowerCase()
@@ -129,12 +116,6 @@ function carrierMatchesChofer(carrier, chofer) {
   )
 }
 
-/**
- * Choferes en ruta según envíos activos (misma fuente que el panel de logística).
- *
- * @param {object[]} shipments
- * @param {object[]} choferes
- */
 function buildFleet(shipments, choferes) {
   const transit = shipments.filter((s) => s.status === 'transit')
   const onRouteIds = new Set()
@@ -182,10 +163,6 @@ function buildFleet(shipments, choferes) {
   return rows.slice(0, 5)
 }
 
-/**
- * @param {object[]} shipments
- * @param {object[]} choferes
- */
 export function buildAnalyticsDashboardFromData(shipments, choferes) {
   const list = Array.isArray(shipments) ? shipments : []
   const drivers = Array.isArray(choferes) ? choferes : []
@@ -215,7 +192,32 @@ export function buildAnalyticsDashboardFromData(shipments, choferes) {
   }
 }
 
-export async function fetchAnalyticsDashboard() {
+function emptyAnalyticsDashboard() {
+  return {
+    kpis: buildKpis([]),
+    deliveryMix: { deliveredPct: 0, transitPct: 0, pendingPct: 0, delayedPct: 0 },
+    recentShipments: [],
+    fleet: [],
+    chartWeek: buildChartWeekKeys([]),
+    chartMonth: [],
+  }
+}
+
+/** @param {unknown} data */
+function normalizeRemoteDashboard(data) {
+  if (!data || typeof data !== 'object') return emptyAnalyticsDashboard()
+  const d = /** @type {Record<string, unknown>} */ (data)
+  return {
+    kpis: Array.isArray(d.kpis) ? d.kpis : [],
+    deliveryMix: d.deliveryMix ?? { deliveredPct: 0, transitPct: 0, pendingPct: 0, delayedPct: 0 },
+    recentShipments: Array.isArray(d.recentShipments) ? d.recentShipments : [],
+    fleet: Array.isArray(d.fleet) ? d.fleet : [],
+    chartWeek: Array.isArray(d.chartWeek) ? d.chartWeek : [],
+    chartMonth: Array.isArray(d.chartMonth) ? d.chartMonth : [],
+  }
+}
+
+async function fetchFromLocalSources() {
   try {
     const [shipments, choferes] = await Promise.all([
       logisticsApi.listShipments(),
@@ -230,4 +232,18 @@ export async function fetchAnalyticsDashboard() {
   const choferes = Array.isArray(log?.choferes) ? log.choferes : []
   const shipments = listLegacyShipmentsFromDb(db)
   return buildAnalyticsDashboardFromData(shipments, choferes)
+}
+
+export async function fetchAnalyticsDashboard() {
+  if (isRemoteApiBaseConfigured()) {
+    try {
+      const api = new BaseApi()
+      const { data } = await api.http.get('api/analytics/dashboard')
+      return normalizeRemoteDashboard(data)
+    } catch (e) {
+      console.error('[analytics] GET api/analytics/dashboard falló', e)
+      return emptyAnalyticsDashboard()
+    }
+  }
+  return fetchFromLocalSources()
 }

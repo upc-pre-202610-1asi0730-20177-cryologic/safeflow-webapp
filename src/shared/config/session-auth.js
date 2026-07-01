@@ -1,36 +1,58 @@
-/** Clave de sesión demo; sustituye por token real (Pinia + API) cuando integres backend. */
-export const SESSION_AUTH_KEY = 'sf_auth'
+/** @typedef {{ token: string, id: number, username: string }} AuthSession */
 
-export function isSessionAuthed() {
+const SESSION_KEY = 'sf_session'
+
+/** @returns {AuthSession | null} */
+export function getAuthSession() {
   try {
-    return (
-      sessionStorage.getItem(SESSION_AUTH_KEY) === '1' ||
-      localStorage.getItem(SESSION_AUTH_KEY) === '1'
-    )
+    const raw =
+      sessionStorage.getItem(SESSION_KEY) ?? localStorage.getItem(SESSION_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw)
+    if (parsed?.token && parsed?.username) return parsed
+    return null
   } catch {
-    return false
+    return null
   }
 }
 
+/** @returns {string | null} */
+export function getAuthToken() {
+  return getAuthSession()?.token ?? null
+}
+
+export function isSessionAuthed() {
+  return getAuthToken() != null
+}
+
 /**
- * @param {boolean} on
- * @param {{ persist?: boolean }} [options] — si `persist`, la sesión demo sobrevive al cerrar pestaña (`localStorage`).
+ * @param {AuthSession} session
+ * @param {{ persist?: boolean }} [options]
  */
-export function setSessionAuthed(on, options = {}) {
+export function setAuthSession(session, options = {}) {
   const persist = options.persist === true
+  const raw = JSON.stringify(session)
   try {
-    if (on) {
-      sessionStorage.setItem(SESSION_AUTH_KEY, '1')
-      if (persist) {
-        localStorage.setItem(SESSION_AUTH_KEY, '1')
-      } else {
-        localStorage.removeItem(SESSION_AUTH_KEY)
-      }
-    } else {
-      sessionStorage.removeItem(SESSION_AUTH_KEY)
-      localStorage.removeItem(SESSION_AUTH_KEY)
-    }
+    sessionStorage.setItem(SESSION_KEY, raw)
+    if (persist) localStorage.setItem(SESSION_KEY, raw)
+    else localStorage.removeItem(SESSION_KEY)
   } catch {
     /* almacenamiento no disponible */
   }
+}
+
+export function clearAuthSession() {
+  try {
+    sessionStorage.removeItem(SESSION_KEY)
+    localStorage.removeItem(SESSION_KEY)
+    sessionStorage.removeItem('sf_auth')
+    localStorage.removeItem('sf_auth')
+  } catch {
+    /* almacenamiento no disponible */
+  }
+}
+
+/** @deprecated Usa setAuthSession / clearAuthSession */
+export function setSessionAuthed(on, options = {}) {
+  if (!on) clearAuthSession()
 }

@@ -1,4 +1,13 @@
 import axios from 'axios'
+import { clearAuthSession, getAuthToken } from '../config/session-auth.js'
+
+/** Cabeceras JSON con Bearer token si hay sesión (para `fetch` fuera de Axios). */
+export function jsonAuthHeaders(extra = {}) {
+  const headers = { Accept: 'application/json', ...extra }
+  const token = getAuthToken()
+  if (token) headers.Authorization = `Bearer ${token}`
+  return headers
+}
 
 /**
  * Origen para JSON (`api/...`). Si defines `VITE_API_BASE_URL` (p. ej. Beeceptor),
@@ -15,6 +24,12 @@ export function getApiBaseUrl() {
     return path === '' ? '/' : `${path}/`
   }
   return path === '' ? window.location.origin : `${window.location.origin}${path}`
+}
+
+/** @returns {boolean} */
+export function isRemoteApiBaseConfigured() {
+  const raw = import.meta.env.VITE_API_BASE_URL
+  return typeof raw === 'string' && raw.trim().length > 0
 }
 
 /**
@@ -51,6 +66,27 @@ export class BaseApi {
         Accept: 'application/json',
       },
     })
+
+    this.#http.interceptors.request.use((config) => {
+      const token = getAuthToken()
+      if (token) config.headers.Authorization = `Bearer ${token}`
+      return config
+    })
+
+    this.#http.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error.response?.status === 401) {
+          clearAuthSession()
+          const path = typeof window !== 'undefined' ? window.location.pathname : ''
+          if (path && !path.includes('/login') && !path.includes('/register')) {
+            const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+            window.location.href = `${base}/login`
+          }
+        }
+        return Promise.reject(error)
+      },
+    )
   }
 
   /** @returns {import('axios').AxiosInstance} */

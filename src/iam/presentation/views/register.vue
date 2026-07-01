@@ -3,7 +3,8 @@ import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import AuthLayout from '@/iam/presentation/components/auth-layout.vue'
-import { setSessionAuthed } from '@/shared/config/session-auth.js'
+import { AuthApi } from '@/iam/infrastructure/auth-api.js'
+import { setAuthSession } from '@/shared/config/session-auth.js'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -14,6 +15,7 @@ const email = ref('')
 const password = ref('')
 const confirm = ref('')
 const busy = ref(false)
+const errorMessage = ref('')
 
 function goAfterAuth() {
   const raw = route.query.next
@@ -25,21 +27,54 @@ function goAfterAuth() {
   router.replace({ name: 'analytics-root' })
 }
 
-function onSubmit() {
+async function onSubmit() {
   if (busy.value) return
-  /** Demo: registro sin API; mismo comportamiento que login (solo botón). */
+  if (!name.value.trim()) {
+    errorMessage.value = t('auth.register.errorName')
+    return
+  }
+  const username = email.value.trim()
+  if (!username || !username.includes('@')) {
+    errorMessage.value = t('auth.register.errorEmail')
+    return
+  }
+  if (password.value.length < 6) {
+    errorMessage.value = t('auth.register.errorPasswordLen')
+    return
+  }
+  if (password.value !== confirm.value) {
+    errorMessage.value = t('auth.register.errorPasswordMatch')
+    return
+  }
+
   busy.value = true
-  window.setTimeout(() => {
-    setSessionAuthed(true, { persist: false })
-    busy.value = false
+  errorMessage.value = ''
+  try {
+    const api = new AuthApi()
+    await api.signUp(username, password.value)
+    const data = await api.signIn(username, password.value)
+    setAuthSession(
+      { token: data.token, id: data.id, username: data.username },
+      { persist: false },
+    )
     goAfterAuth()
-  }, 220)
+  } catch (err) {
+    const code = err?.response?.data?.error
+    errorMessage.value =
+      code === 'username_taken'
+        ? t('auth.register.errorUsernameTaken')
+        : t('auth.register.errorGeneric')
+  } finally {
+    busy.value = false
+  }
 }
 </script>
 
 <template>
   <AuthLayout>
     <h1 class="sf-auth-card__title">{{ t('auth.register.heroTitle') }}</h1>
+
+    <p v-if="errorMessage" class="sf-auth-error" role="alert">{{ errorMessage }}</p>
 
     <form class="sf-auth-form" @submit.prevent="onSubmit">
       <div class="sf-auth-field">
@@ -106,6 +141,16 @@ function onSubmit() {
 </template>
 
 <style scoped>
+.sf-auth-error {
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+  text-align: center;
+}
+
 .sf-auth-card__title {
   margin: 0 0 26px;
   text-align: center;

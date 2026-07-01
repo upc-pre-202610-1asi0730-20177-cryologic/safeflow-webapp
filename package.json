@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:azure": "vite --mode azure",
     "dev:mockapi": "vite --mode mockapi",
     "build": "vite build",
     "preview": "vite preview"

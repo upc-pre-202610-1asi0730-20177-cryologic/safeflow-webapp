@@ -3,7 +3,8 @@ import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import AuthLayout from '@/iam/presentation/components/auth-layout.vue'
-import { setSessionAuthed } from '@/shared/config/session-auth.js'
+import { AuthApi } from '@/iam/infrastructure/auth-api.js'
+import { setAuthSession } from '@/shared/config/session-auth.js'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -13,6 +14,7 @@ const email = ref('')
 const password = ref('')
 const remember = ref(false)
 const busy = ref(false)
+const errorMessage = ref('')
 
 function goAfterAuth() {
   const raw = route.query.next
@@ -24,21 +26,37 @@ function goAfterAuth() {
   router.replace({ name: 'analytics-root' })
 }
 
-function onSubmit() {
+async function onSubmit() {
   if (busy.value) return
-  /** Demo: sin backend; entras solo con el botón (campos opcionales / vacíos). */
+  const username = email.value.trim()
+  if (!username || !password.value) {
+    errorMessage.value = t('auth.login.errorRequired')
+    return
+  }
+
   busy.value = true
-  window.setTimeout(() => {
-    setSessionAuthed(true, { persist: remember.value })
-    busy.value = false
+  errorMessage.value = ''
+  try {
+    const api = new AuthApi()
+    const data = await api.signIn(username, password.value)
+    setAuthSession(
+      { token: data.token, id: data.id, username: data.username },
+      { persist: remember.value },
+    )
     goAfterAuth()
-  }, 220)
+  } catch {
+    errorMessage.value = t('auth.login.errorInvalid')
+  } finally {
+    busy.value = false
+  }
 }
 </script>
 
 <template>
   <AuthLayout>
     <h1 class="sf-auth-card__title">{{ t('auth.login.heroTitle') }}</h1>
+
+    <p v-if="errorMessage" class="sf-auth-error" role="alert">{{ errorMessage }}</p>
 
     <form class="sf-auth-form" @submit.prevent="onSubmit">
       <div class="sf-auth-field">
@@ -72,7 +90,6 @@ function onSubmit() {
         </button>
       </div>
 
-      <!-- PrimeVue Button fuerza type="button"; sin @click el formulario no dispara submit. -->
       <pv-button
         type="button"
         class="sf-auth-form__submit"
@@ -95,6 +112,16 @@ function onSubmit() {
 </template>
 
 <style scoped>
+.sf-auth-error {
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+  text-align: center;
+}
+
 .sf-auth-card__title {
   margin: 0 0 28px;
   text-align: center;

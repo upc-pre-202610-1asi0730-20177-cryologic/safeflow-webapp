@@ -1,10 +1,11 @@
 /**
- * Alertas (Supporting): `db.json` → `alerts.alertas`.
+ * Alertas: `GET /api/alerts/dashboard` (Azure) o KPIs desde `db.json` en desarrollo local.
  */
 
 import db from '../../../server/db.json'
+import { BaseApi, isRemoteApiBaseConfigured } from '../../shared/infrastructure/base-api.js'
 
-function buildKpis(data) {
+function buildKpisFromDb(data) {
   const alertas = Array.isArray(data?.alerts?.alertas) ? data.alerts.alertas : []
   const activas = alertas.filter((a) => a.estado === 'activa').length
   const resueltas = alertas.filter((a) => a.estado === 'resuelta').length
@@ -50,11 +51,38 @@ function buildKpis(data) {
   ]
 }
 
+function emptyAlertsDashboard() {
+  return {
+    kpis: buildKpisFromDb({ alerts: { alertas: [] }, system: { indicadores: {} } }),
+    feedItems: [],
+  }
+}
+
+/** @param {unknown} data */
+function normalizeRemoteDashboard(data) {
+  if (!data || typeof data !== 'object') return emptyAlertsDashboard()
+  const d = /** @type {Record<string, unknown>} */ (data)
+  return {
+    kpis: Array.isArray(d.kpis) ? d.kpis : [],
+    feedItems: Array.isArray(d.feedItems) ? d.feedItems : [],
+  }
+}
+
 export async function fetchAlertsDashboard() {
+  if (isRemoteApiBaseConfigured()) {
+    try {
+      const api = new BaseApi()
+      const { data } = await api.http.get('api/alerts/dashboard')
+      return normalizeRemoteDashboard(data)
+    } catch (e) {
+      console.error('[alerts] GET api/alerts/dashboard falló', e)
+      return emptyAlertsDashboard()
+    }
+  }
+
   const data = db
   return {
-    kpis: buildKpis(data),
-    /** El feed térmico se arma en Pinia desde monitoreo en vivo (`rebuildThermalFeed`). */
+    kpis: buildKpisFromDb(data),
     feedItems: [],
   }
 }

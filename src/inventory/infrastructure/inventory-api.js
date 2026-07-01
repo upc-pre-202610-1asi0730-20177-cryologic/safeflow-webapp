@@ -6,6 +6,8 @@ import db from '../../../server/db.json'
 import {
   BaseApi,
   getApiBaseUrl,
+  isRemoteApiBaseConfigured,
+  jsonAuthHeaders,
   shouldAppendSameOriginCacheBuster,
 } from '../../shared/infrastructure/base-api.js'
 import { BaseEndpoint } from '../../shared/infrastructure/base-endpoint.js'
@@ -14,12 +16,6 @@ import { listLegacyItemsFromDb } from './inventory-aggregate.js'
 
 const itemsEndpointPath =
   import.meta.env.VITE_INVENTORY_ITEMS_PATH || 'api/inventory/items'
-
-/** @returns {boolean} */
-function isRemoteApiBaseConfigured() {
-  const raw = import.meta.env.VITE_API_BASE_URL
-  return typeof raw === 'string' && raw.trim().length > 0
-}
 
 /**
  * Lista desde el mismo origen que el middleware de Vite (lee `server/db.json` en disco).
@@ -35,7 +31,7 @@ async function listItemsViaFetchNoStore() {
     const qs = shouldAppendSameOriginCacheBuster() ? `?_=${Date.now()}` : ''
     const url = `${base}/${path}${qs}`
     const res = await fetch(url, {
-      headers: { Accept: 'application/json' },
+      headers: jsonAuthHeaders(),
       cache: 'no-store',
     })
     if (!res.ok) return null
