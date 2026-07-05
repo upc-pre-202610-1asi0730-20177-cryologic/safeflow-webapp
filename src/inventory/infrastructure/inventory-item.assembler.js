@@ -36,7 +36,7 @@ function objectOrPlainBilingual(value) {
 }
 
 /**
- * Ubicación: slug de formulario → traducción; otro string se muestra igual en EN/ES.
+ * Ubicación: slug de formulario o clave `t:seedData.*` → traducción; otro string igual en EN/ES.
  * @param {unknown} value
  * @returns {{ en: string, es: string } | null}
  */
@@ -44,13 +44,20 @@ function locationFromApi(value) {
   if (value == null) return null
   if (typeof value === 'object' && !Array.isArray(value)) {
     if (Object.keys(value).length === 0) return null
-    if ('en' in value || 'es' in value) return /** @type {{ en: string, es: string }} */ (value)
+    if ('en' in value || 'es' in value) {
+      const pack = /** @type {{ en?: string, es?: string }} */ (value)
+      const en = pack.en != null ? String(pack.en).trim() : ''
+      const es = pack.es != null ? String(pack.es).trim() : ''
+      const tKey = en.startsWith('t:') ? en : es.startsWith('t:') ? es : null
+      if (tKey) return toLocalizedText(tKey)
+      return { en: en || es, es: es || en }
+    }
     return null
   }
   if (typeof value === 'string') {
     const s = value.trim()
     if (!s) return null
-    const seedKey = LOCATION_SLUG_TO_SEED[s]
+    const seedKey = LOCATION_SLUG_TO_SEED[s] ?? (s.startsWith('t:') ? s : null)
     return seedKey ? toLocalizedText(seedKey) : { en: s, es: s }
   }
   return null

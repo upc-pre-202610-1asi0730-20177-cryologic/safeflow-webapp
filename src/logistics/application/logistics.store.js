@@ -1,4 +1,4 @@
-﻿import { defineStore } from 'pinia'
+import { defineStore } from 'pinia'
 import router from '@/router.js'
 import { useInventoryStore } from '@/inventory/application/inventory.store.js'
 import { useEnvironmentalMonitoringStore } from '@/environmental-monitoring/application/monitoring.store.js'
@@ -28,6 +28,19 @@ function singleCarrierName(ch, codeFallback) {
     if (typeof n === 'string' && n.trim()) return n.trim()
     if (n && typeof n === 'object') return String(n.en ?? n.es ?? ch.codigo ?? '').trim() || String(ch.codigo ?? '—')
     return String(ch.codigo ?? codeFallback ?? '—')
+}
+
+/** Cuerpo POST para `api/logistics/shipments` (backend Azure). */
+function toApiCreateShipmentBody(payload) {
+    return {
+        inventoryItemId: String(payload.inventoryItemId ?? ''),
+        qty: Number(payload.qty),
+        originKey: payload.originKey ?? null,
+        destinationKey: payload.destinationKey ?? null,
+        choferCodigo: payload.choferCodigo ?? null,
+        operarioCodigo: payload.operarioCodigo ?? null,
+        status: payload.status ?? 'pending',
+    }
 }
 
 export const useLogisticsStore = defineStore('logistics', {
@@ -93,6 +106,8 @@ export const useLogisticsStore = defineStore('logistics', {
                         destinationName: destLabel,
                     },
                 )
+            } else {
+                body = toApiCreateShipmentBody(payload)
             }
             const created = await logisticsApi.createShipment(body)
             await this.loadTracking()

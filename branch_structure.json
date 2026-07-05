@@ -1,0 +1,36 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "develop",
+    "feature/alerts",
+    "feature/analytics",
+    "feature/environmental-monitoring",
+    "feature/iam",
+    "feature/inventory",
+    "feature/logistics",
+    "feature/reporting",
+    "main"
+  ],
+  "parent": {
+    "develop": "main",
+    "feature/alerts": "main",
+    "feature/analytics": "main",
+    "feature/environmental-monitoring": "main",
+    "feature/iam": "main",
+    "feature/inventory": "main",
+    "feature/logistics": "main",
+    "feature/reporting": "main",
+    "main": null
+  },
+  "order": [
+    "main",
+    "develop",
+    "feature/alerts",
+    "feature/analytics",
+    "feature/environmental-monitoring",
+    "feature/iam",
+    "feature/inventory",
+    "feature/logistics",
+    "feature/reporting"
+  ]
+}

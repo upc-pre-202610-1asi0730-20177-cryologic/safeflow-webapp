@@ -1,7 +1,6 @@
 import {
   BarChart3,
   Bell,
-  FileBarChart,
   Leaf,
   Package,
   Truck,
@@ -46,12 +45,12 @@ export const boundedContexts = [
     basePath: '/alerts',
     icon: Bell,
   },
-  {
-    id: 'reporting',
-    labelKey: 'bounded.reporting.label',
-    basePath: '/reporting',
-    icon: FileBarChart,
-  },
+  // {
+  //   id: 'reporting',
+  //   labelKey: 'bounded.reporting.label',
+  //   basePath: '/reporting',
+  //   icon: FileBarChart,
+  // },
 ]
 
 export function contextByPath(path) {
